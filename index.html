@@ -3,16 +3,20 @@
 
 <head>
   <meta charset="utf-8">
-  <title></title>
-  <meta name="description" content="">
+  <title>Vos comptes | La Société d'épargne</title>
+  <meta name="description" content="La Société d'épargne vous permet à tous de gérer ses comptes avec simplicité, rapidité et sécurité">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
 
   <link rel="manifest" href="site.webmanifest">
   <link rel="apple-touch-icon" href="icon.png">
   <!-- Place favicon.ico in the root directory -->
-
+  <link rel="icon" type="image/svg" href="img/favicon.png" />
   <link rel="stylesheet" href="css/normalize.css">
+  <!-- Bootstrap4, Google Fonts and FontAwesomme CDN -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  
   <link rel="stylesheet" href="css/main.css">
 
   <meta name="theme-color" content="#fafafa">
@@ -20,12 +24,51 @@
 
 <body>
 
-  <!-- Add your site or application content here -->
-  <p>Hello world! This is HTML5 Boilerplate.</p>
-  
-  
+  <!-- Navigation bar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white">
+    <a class="navbar-brand" href="#"><img src="img/brand.png" alt="Logo de la société"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link active font-weight-bold p-2" href="#">Accueil <span class="sr-only">(current)</span></a>
+        <a class="nav-link font-weight-bold p-2" href="#">Actualités bancaires</a>
+        <a class="nav-link font-weight-bold bg-orange rounded text-white p-2" href="#">Ouvrir un compte</a>
+        <a class="nav-link font-weight-bold p-2" href="#">Blog</a>
+        <a class="nav-link font-weight-bold p-2" href="#" tabindex="-1" aria-disabled="true"></a>
+      </div>
+    </div>
+  </nav>
+  <!-- Header -->
+  <header class="jumbotron jumbotron-fluid  bg-info text-white">
+    <section class="container">
+      <h1 class="display-3 font-weight-bold"><span class="text-dark">La</span> société d'épargne</h1>
+      <p class="lead font-weight-bold"><span class="text-dark">La</span> banque pratique, rapide et sécure.</p>
+    </section>
+  </header>
+  <!-- Main -->
+  <main>
+      <p>Account cards</p>
+  </main>
+  <!-- Footer -->
+    <footer class="jumbotron jumbotron-fluid bg-info text-white">
+    <div class="container text-center">
+      <p class="lead font-weight-bold">@La Société d'épargne tous droits réservés</p>
+      <div class="container w-50 d-flex justify-content-around">
+        <a href="#"><i class="fab fa-twitter-square fa-3x text-white"></i></a>
+        <a href="#"><i class="fab fa-facebook-square fa-3x text-white"></i></a>
+        <a href="#"><i class="fab fa-linkedin fa-3x text-white"></i></a>
+      </div>
+    </div>
+  </footer>
+
+
   <script src="js/vendor/modernizr-3.11.2.min.js"></script>
   <script src="js/plugins.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
   <script src="js/main.js"></script>
 </body>
 
