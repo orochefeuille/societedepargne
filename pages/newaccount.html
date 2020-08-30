@@ -8,10 +8,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <link rel="manifest" href="site.webmanifest">
-  <link rel="apple-touch-icon" href="icon.png">
+  <link rel="apple-touch-icon" href="../icon.png">
   <!-- Place favicon.ico in the root directory -->
   <link rel="icon" type="image/svg" href="../img/favicon.png" />
-  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="../css/normalize.css">
   <!-- Bootstrap4, Google Fonts and FontAwesomme CDN -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
@@ -50,8 +50,39 @@
     </section>
   </header>
   <!-- Main -->
-  <main>
-      <p>Création</p>
+  <main class="container-fluid w-75">
+    <section class="newaccount-wrapper">
+      <h2 class="text-info mb-5 lead font-weight-bold text-center">Ouvrir un compte en un instant :</h2>
+      <p id="done" class="bg-success text-white text-center opacity-0">Compte créer avec succès</p>
+      <form class="container-fluid text-left">
+        <div class="form-group">
+          <label for="accounts-list">Choisissez un compte :</label>
+          <select class="form-control" id="accounts-list">
+            <option>-- Choisir --</option>
+            <option>Compte courant</option>
+            <option>Livret A</option>
+            <option>Plan Epargne Logement (PEL)</option>
+            <option>Livret de développement durable (LDD)</option>
+            <option>Livret d’épargne populaire (LEP)</option>
+          </select>
+        </div>
+          <div class="form-group">
+          <label for="account-amount">Indiquez le montant du premier dépôt :</label>
+          <input type="number" class="form-control" id="account-amount" aria-describedby="amountHelp">
+          <small id="amountHelp" class="form-text text-orange">Le dépôt minimum pour ouvrir un compte est de 50 €.</small>
+        </div>
+      </form>
+      <div class="container">
+        <button type="button" id="create-account" class="btn bg-orange text-white">Créer le compte</button>
+        <div id="confirm-card" class="card border-dark my-3 opacity-0">
+          <div class="card-body bg-dark text-white">
+            <p class="card-text"></p>
+            <button type="button" id="confirm-account" class="btn bg-orange text-white font-weight-bold float-right">Confirmer</button>
+            <button type="button" id="cancel-account" class="btn bg-dark text-info border-info float-right mx-2">Annuler</button>
+          </div>
+        </div>
+      </div>
+    </section> 
   </main>
   <!-- Footer -->
     <footer class="jumbotron jumbotron-fluid bg-info text-white">
@@ -66,12 +97,11 @@
   </footer>
 
 
-  <script src="js/vendor/modernizr-3.11.2.min.js"></script>
-  <script src="js/plugins.js"></script>
+  <script src="../js/vendor/modernizr-3.11.2.min.js"></script>
+  <script src="../js/plugins.js"></script>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-  <script src="../js/main.js"></script>
    <script src="../js/newaccount.js"></script>
 </body>
 

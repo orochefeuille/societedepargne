@@ -56,3 +56,65 @@ httpRequest.onreadystatechange = function() {
         }
      }
  }
+
+
+ /**********  Page accounts <=> accounts.json file *******/
+ // **** Get data 
+httpRequest = new XMLHttpRequest();
+httpRequest.onreadystatechange = function() {
+    if(httpRequest.readyState === XMLHttpRequest.DONE) {
+        if(httpRequest.status === 200) {
+            let oldAccounts = JSON.parse(httpRequest.responseText);
+            createAccounts(oldAccounts);
+
+        } else {
+            console.log("Une erreur est survenue !");
+        }
+    } else {
+        console.log("En attente de réponse");
+    }
+};
+ httpRequest.open('GET', 'doc/accounts.json', true);
+ httpRequest.send();
+
+ // Create articles from accounts.json
+ function createAccounts(accounts) {
+
+ }
+// Create DOM elements from "oc-jswebsrv.herokuapp.com/api" API
+function createAccounts(accounts) {
+    const articlesWrapper = document.getElementById("articless-wrapper");
+    for (let account of accounts) {
+        let article = document.createElement("article");
+        article.classList.add("card", "m-2", "col-12", "col-md-4", "col-lg-3"); 
+        let articleBody = document.createElement("div");
+        articleBody.classList.add("card-body"); 
+        let articleTitle = document.createElement("h3");
+        articleTitle.classList.add("card-title", "h-25"); 
+        let articleBodyParag = document.createElement("p");
+        articleBodyParag.classList.add("card-text"); 
+        let articleBodyParagBalance = document.createElement("p");
+        articleBodyParagBalance.classList.add("card-text"); 
+        let articleBodyBtn = document.createElement("a");
+        articleBodyParagBalance.classList.add("btn", "btn-info", "w-100", "bg-orange", "border-0", "font-weight-bold"); 
+        articleBodyBtn.setAttribute("href", "#");
+        articleBodyBtn.innerText = "Gérer";
+        for(key in account) {
+            if(key === 'title') {
+                articleTitle.innerText = account[key];
+            }
+            if(key === 'text') {
+                articleBodyParag.innerText = account[key];
+            }
+            if(key === 'balance') {
+                articleBodyParagBalance.innerHTML = `<small>Solde : </small>${account[key]} €`;
+            }
+        }
+
+        articleBody.appendChild(articleTitle);
+        articleBody.appendChild(articleBodyParag);
+        articleBody.appendChild(articleBodyParagBalance);
+        article.appendChild(articleBody);
+        articlesWrapper.appendChild(article);
+    }
+}

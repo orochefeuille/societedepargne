@@ -1,0 +1,17 @@
+[
+    {
+        "title": "Compte courant",
+        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sagittis quam eu malesuada pellentesque.",
+        "balance": "159.67"
+    },
+    {
+        "title": "Livret A",
+        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sagittis quam eu malesuada pellentesque.",
+        "balance": "530.36"
+    },
+    {
+        "title": "Plan Epargne Logement (PEL)",
+        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sagittis quam eu malesuada pellentesque.",
+        "balance": "4596.63"
+    }
+]
