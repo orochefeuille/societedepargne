@@ -60,11 +60,11 @@ httpRequest.onreadystatechange = function() {
 
  /**********  Page accounts <=> accounts.json file *******/
  // **** Get data 
-httpRequest = new XMLHttpRequest();
-httpRequest.onreadystatechange = function() {
-    if(httpRequest.readyState === XMLHttpRequest.DONE) {
-        if(httpRequest.status === 200) {
-            let oldAccounts = JSON.parse(httpRequest.responseText);
+httpRequest2 = new XMLHttpRequest();
+httpRequest2.onreadystatechange = function() {
+    if(httpRequest2.readyState === XMLHttpRequest.DONE) {
+        if(httpRequest2.status === 200) {
+            let oldAccounts = JSON.parse(httpRequest2.responseText);
             createAccounts(oldAccounts);
 
         } else {
@@ -74,8 +74,8 @@ httpRequest.onreadystatechange = function() {
         console.log("En attente de réponse");
     }
 };
- httpRequest.open('GET', 'doc/accounts.json', true);
- httpRequest.send();
+ httpRequest2.open('GET', 'doc/accounts.json', true);
+ httpRequest2.send();
 
  // Create articles from accounts.json
  function createAccounts(accounts) {
