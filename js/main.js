@@ -77,10 +77,6 @@ httpRequest2.onreadystatechange = function() {
  httpRequest2.open('GET', 'doc/accounts.json', true);
  httpRequest2.send();
 
- // Create articles from accounts.json
- function createAccounts(accounts) {
-
- }
 // Create DOM elements from "oc-jswebsrv.herokuapp.com/api" API
 function createAccounts(accounts) {
     const articlesWrapper = document.getElementById("articless-wrapper");
@@ -118,3 +114,15 @@ function createAccounts(accounts) {
         articlesWrapper.appendChild(article);
     }
 }
+
+
+ // Create articles from accounts.json
+//  const sessionObj = [
+//     {
+//      "title": sessionStorage.getItem("accTitle"),
+//      "text": sessionStorage.getItem("accText"),
+//      "balance": sessionStorage.getItem("accAmount")
+//     }
+//  ]
+//  createAccounts(sessionObj);
+ 
