@@ -97,6 +97,14 @@ function createAccountObject(accounts) {
             "balance": amount
         }
 
+        
+        // Try to use Session
+        // sessionStorage.clear();
+        // sessionStorage.setItem('accTitle', `${accountEntries.title}`);
+        // sessionStorage.setItem('accText', `${accountEntries.text}`);
+        // sessionStorage.setItem('accAmount', `${accountEntries.balance}`);
+
+
     // Post the new account in "accounts.json" file
         // httpRequest = new XMLHttpRequest();
         // httpRequest.onreadystatechange = function() {
