@@ -1,6 +1,6 @@
-// ********* Banking information on statistics.html **********
+// ********* Articles on blog.html **********
 
-// Get the "savingsrate.json" file
+// Get the "oc-jswebsrv.herokuapp api articles.json" file
 httpRequest = new XMLHttpRequest();
 httpRequest.onreadystatechange = function() {
     if(httpRequest.readyState === XMLHttpRequest.DONE) {
