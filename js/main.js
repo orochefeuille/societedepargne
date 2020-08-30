@@ -56,3 +56,46 @@ httpRequest.onreadystatechange = function() {
         }
      }
  }
+
+
+ /**********  Page accounts <=> oldaccounts.json file *******/
+ // **** Get data 
+httpRequest = new XMLHttpRequest();
+httpRequest.onreadystatechange = function() {
+    if(httpRequest.readyState === XMLHttpRequest.DONE) {
+        if(httpRequest.status === 200) {
+            let oldAccounts = JSON.parse(httpRequest.responseText);
+            createAccounts(oldAccounts);
+
+        } else {
+            console.log("Une erreur est survenue !");
+        }
+    } else {
+        console.log("En attente de réponse");
+    }
+};
+ httpRequest.open('GET', 'doc/accounts.json', true);
+ httpRequest.send();
+
+ // Create articles from accounts.json
+ function createAccounts(accounts) {
+
+ }
+
+ // **** Post data
+httpRequest = new XMLHttpRequest();
+httpRequest.onreadystatechange = function() {
+    if(httpRequest.readyState === XMLHttpRequest.DONE) {
+        if(httpRequest.status === 200) {
+            let oldAccounts = JSON.parse(httpRequest.responseText);
+            console.log(oldAccounts);
+
+        } else {
+            console.log("Une erreur est survenue !");
+        }
+    } else {
+        console.log("En attente de réponse");
+    }
+};
+ httpRequest.open('POST', 'doc/accounts.json', true);
+ httpRequest.send();
