@@ -1,10 +1,40 @@
 <?php
+  function get_url_account_name() :string {
+    $name = "";
+    if(isset($_GET["account"]) && !empty($_GET["account"])) {
+      $name = htmlspecialchars(($_GET["account"]));
+    }
+    return $name;
+  }
+  $account_name = get_url_account_name();
+
   require('navbar.php');
+  $page_title ="Votre $account_name | La Société d'épargne";
   require('header.php');
+  require('accounts.php');
+  $accounts = get_accounts();
+  
+  function get_account_info(array $accounts, string $account_name, string $item) :string {
+    $account_info = "";
+    foreach($accounts as $account){
+        $account_info = $account[$item];
+        return $account_info;
+
+    }
+
+  }
+
 ?>
   <!-- Main -->
   <main>
-      <p>Single</p>
+    <div class="jumbotron w-75 mx-auto">
+      <div class="container">
+        <h2 class="text-white bg-orange m-3 p-2 text-center"><?= $account_name ?> </h2>
+        <p class="lead">N° du compte : <span class="text-info"><?= get_account_info($accounts, $account_name, 'number') ?></span> </p>
+        <p class="lead">Gestionnaire : <span class="text-info"><?= get_account_info($accounts, $account_name, 'owner') ?></span> </p>
+        <p class="lead">Solde : <span class="text-info"><?= get_account_info($accounts, $account_name, 'amount') ?></span> </p>
+        <p class="lead">Dernière opération : <span class="text-info"><?= get_account_info($accounts, $account_name, 'last_operation') ?></span> </p>
+      </div>
   </main>
 
 

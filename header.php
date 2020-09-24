@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Vos comptes | La Société d'épargne</title>
+  <title><?php echo $page_title ?></title>
   <meta name="description" content="La Société d'épargne vous permet à tous de gérer ses comptes avec simplicité, rapidité et sécurité.">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 

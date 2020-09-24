@@ -1,6 +1,21 @@
 <?php
   require('navbar.php');
+
+  $page_title ="Vos comptes | La Société d'épargne";
   require('header.php');
+  require('accounts.php');
+
+  $accounts = get_accounts();
+
+  // date in french format
+  $date = date('Y-m-d');
+  setlocale(LC_TIME, "fr_FR", "French");
+  $date = strftime("%d %B %G", strtotime($date));
+
+  // Change the balance color 
+  function balance_color(float $balance) :string {
+    return $balance > 0 ? 'text-success' : 'text-danger';
+  }
 ?>
 
   <!-- Main -->
@@ -8,32 +23,23 @@
       <section class="accounts-vue-wrapper">
         <h2 class="text-info mb-5">Tous vos comptes en un coup d'oeil :</h2>
         <div id="articless-wrapper" class="row mx-auto d-flex justify-content-around">
-          <!-- <article class="card m-2 col-12 col-md-4 col-lg-3">
-            <div class="card-body">
-              <h3 class="card-title h-25">Compte courant</h3>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <p><small>Solde : </small>256.39 €</p>
-              <a href="#" class="btn btn-info w-100 bg-orange border-0 font-weight-bold">Gérer</a>
-            </div>
-          </article>
-
-          <article class="card m-2 col-12  col-md-4 col-lg-3">
-            <div class="card-body">
-              <h3 class="card-title h-25">Livret A</h3>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <p><small>Solde : </small>1280.96 €</p>
-              <a href="#" class="btn btn-info w-100 bg-orange border-0 font-weight-bold">Gérer</a>
-            </div>
-          </article>
-
-          <article class="card m-2 col-12  col-md-4 col-lg-3">
-            <div class="card-body">
-              <h3 class="card-title h-25">Plan épargne logement</h3>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <p><small>Solde : </small>5160.58 €</p>
-              <a href="#" class="btn btn-info w-100 bg-orange border-0 font-weight-bold">Gérer</a>
-            </div>
-          </article> -->
+          <?php
+            foreach($accounts as $account): ?>
+              <article class="card mb-5" style="width: 18rem;">
+                <header class="bg-dark text-white pt-2 pb-1 mb-4">
+                  <h3 class="card-title"> <?=  $account['name'];  ?></h3>
+                </header>
+                <div class="card-body p-0">
+                  <p class="card-text">Solde au  <?=  $date  ?> :</p>
+                  <p class="card-text <?=  balance_color($account['amount']); ?>"><?=  $account['amount']; ?> €</p>
+                </div>
+                <footer class="bg-orange my-3 p-2 w-75 rounded mx-auto">
+                  <a href="singleaccount.php?account=<?= $account['name']; ?>" class="card-link text-white">Consulter ce compte</a>
+                </footer>
+              </article>
+          <?php 
+            endforeach;
+          ?>
         </div>
       </section>
   </main>
