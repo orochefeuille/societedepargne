@@ -1,5 +1,5 @@
 <!-- Footer -->
-<footer class="jumbotron jumbotron-fluid bg-info text-white mt-5 mb-0">
+<footer class="jumbotron jumbotron-fluid bg-info text-white mt-5 fixed-bottom">
     <div class="container text-center">
       <p class="lead font-weight-bold">@La Société d'épargne tous droits réservés</p>
       <div class="container w-50 d-flex justify-content-around">
