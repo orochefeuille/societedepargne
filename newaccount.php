@@ -19,7 +19,7 @@
     return $balance > 0 ? 'text-success' : 'text-danger';
   }
 
-  //Get the account info
+  // Get the account info
   function account_info(string $name) :string {
     $field = "";
     if(isset($_POST['submit'])) {
@@ -27,12 +27,11 @@
     }
     return $field;
   }
+
   $account_title =  account_info('new-account');
   $account_amount =  account_info('account-amount');
   $account_owner =  'Mr Gossart Thomas';
   $account_number =  "N:0132520024 fr 45";
-
-  
 ?>
 
   <main class="container-fluid">
@@ -40,8 +39,8 @@
       <div class="col-12 col-md-8">
         <section class="newaccount-wrapper">
           <h2 class="text-info mb-5 lead font-weight-bold text-center">Ouvrir un compte en un instant :</h2>
-          <p id="done" class="bg-success text-white text-center opacity-0">Compte créé avec succès</p>
-          <form id="account-creation-form" class="container-fluid text-left" method="POST">
+          <p id="done" class="bg-success text-white text-center">Compte créé avec succès</p>
+          <form action="" id="account-creation-form" class="container-fluid text-left" method="POST">
             <div class="form-group">
               <label for="accounts-list">Choisissez un compte :</label>
               <select class="form-control" id="accounts-list" name="new-account" required>
@@ -55,23 +54,25 @@
             </div>
             <div class="form-group">
               <label for="account-amount">Indiquez le montant du premier dépôt :</label>
-              <input type="number" class="form-control" id="account-amount"  name="account-amount" aria-describedby="amountHelp" min="50" placeholder="50" required>
+              <input type="number" class="form-control" id="account-amount"  name="account-amount" aria-describedby="amountHelp" min="50" required>
               <small id="amountHelp" class="form-text text-orange">Le dépôt minimum pour ouvrir un compte est de 50 €.</small>
             </div>
-          </form>
-          <div class="container">
+            <div class="form-group">
             <button type="button" id="create-account" class="btn bg-orange text-white">Créer le compte</button>
             <div id="confirm-card" class="card border-dark my-3">
               <div class="card-body bg-dark text-white">
                 <p class="card-text"> </p>
-                <button type="submit" form="account-creation-form" id="confirm-account" class="btn bg-orange text-white font-weight-bold float-right">Confirmer</button>
+                <button type="submit" name="submit" id="confirm-account" class="btn bg-orange text-white font-weight-bold float-right">Confirmer</button>
                 <button type="button" id="cancel-account" class="btn bg-dark text-info border-info float-right mx-2">Annuler</button>
               </div>
             </div>
-          </div>  
+          </div> 
+          </form>
+           
         </section> 
       </div>
-      <div class="col-12  col-md-4">
+      <?php if($account_title && $account_amount) : ?>
+        <div class="col-12  col-md-4">
         <aside class="text-center">
           <h2 class="text-info mb-5 lead font-weight-bold text-center">Compte créé le <?= $account_date; ?></h2>
           <div id="articless-wrapper" class="row mx-auto d-flex justify-content-around">
@@ -93,6 +94,8 @@
             </div>
         </aside>
       </div>
+      <?php endif; ?>
+      
     </div>
     
   </main>
