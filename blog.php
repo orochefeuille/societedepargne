@@ -1,4 +1,5 @@
 <?php
+  $page_title ="Votre blog | La Société d'épargne";
   require('navbar.php');
   require('header.php');
 ?>
