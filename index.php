@@ -47,7 +47,7 @@
   </main>
   <!-- Security layer -->
   <section id="layer" class="container bg-orange text-white">
-    <div class="close-layer text-white" onclick="closeAlert()">
+    <div class="close-layer text-white">
         <i class="fas fa-times"></i>
     </div>
     <div>
