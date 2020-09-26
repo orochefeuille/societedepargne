@@ -93,6 +93,13 @@ textarea {
     position: relative;
   }
 
+  main {
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   .bg-orange {
     background-color: #DF7D49;
   }
@@ -100,6 +107,12 @@ textarea {
   .text-orange {
     color: #DF7D49;
   }
+
+  /********** utilities **********/
+  .opacity-0 {
+    opacity: 0;
+    transition: opacity 0.5s linear;
+}
 
   /********** Menu **********/
   .navbar-light .navbar-nav .nav-link.active {
@@ -131,6 +144,12 @@ textarea {
   .close-layer:hover {
     cursor: pointer;
     font-size: 1.2rem;
+  }
+
+  /*----- Statistics page ----- */
+  .table-striped>tbody>tr:nth-child(odd)>td,
+  tr.found {
+    background-color:#17a2b8;
   }
 
 

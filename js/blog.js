@@ -1,11 +1,11 @@
-// ********* Articles on blog.html **********
+//  // ********* Articles on blog.html **********
 
 // Get the "oc-jswebsrv.herokuapp api articles.json" file
-httpRequest = new XMLHttpRequest();
-httpRequest.onreadystatechange = function() {
-    if(httpRequest.readyState === XMLHttpRequest.DONE) {
-        if(httpRequest.status === 200) {
-            let apiArticles = JSON.parse(httpRequest.responseText);
+httpRequest4 = new XMLHttpRequest();
+httpRequest4.onreadystatechange = function() {
+    if(httpRequest4.readyState === XMLHttpRequest.DONE) {
+        if(httpRequest4.status === 200) {
+            let apiArticles = JSON.parse(httpRequest4.responseText);
             createArticles(apiArticles);
         } else {
             console.log("Une erreur est survenue !");
@@ -15,12 +15,12 @@ httpRequest.onreadystatechange = function() {
     }
 };
  //Préparation et lancement de la requête
- httpRequest.open('GET', 'https://oc-jswebsrv.herokuapp.com/api/articles', true);
- httpRequest.send();
+ httpRequest4.open('GET', 'https://oc-jswebsrv.herokuapp.com/api/articles', true);
+ httpRequest4.send();
 
  // Create DOM elements from "oc-jswebsrv.herokuapp.com/api" API
  function createArticles(api) {
-    const mainSection = document.querySelector("main > section");
+    const mainSection = document.querySelector(".blog-wrapper");
     const articlesWrapper = document.createElement("div");
     articlesWrapper.classList.add("d-flex", "justify-content-around", "flex-wrap");
     for (let paper of api) {
