@@ -1,4 +1,5 @@
 <?php
+  $page_title ="La finance | La Société d'épargne";
   require('navbar.php');
   require('header.php');
 

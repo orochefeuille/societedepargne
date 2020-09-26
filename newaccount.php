@@ -1,9 +1,9 @@
 <?php
+  $page_title ="Ouvrir un compte | La Société d'épargne";
+
   require('navbar.php');
   require('header.php');
 
-  // require('accounts.php');
-  // $accounts = get_accounts();
 
   // date in french format
   function get_account_creation_date() :string {
@@ -61,13 +61,14 @@
           </form>
           <div class="container">
             <button type="button" id="create-account" class="btn bg-orange text-white">Créer le compte</button>
-            <div id="confirm-card" class="card border-dark my-3 opacity-0">
+            <div id="confirm-card" class="card border-dark my-3">
               <div class="card-body bg-dark text-white">
                 <p class="card-text"> </p>
-                <button type="button" form="account-creation-form" id="confirm-account" class="btn bg-orange text-white font-weight-bold float-right">Confirmer</button>
+                <button type="submit" form="account-creation-form" id="confirm-account" class="btn bg-orange text-white font-weight-bold float-right">Confirmer</button>
                 <button type="button" id="cancel-account" class="btn bg-dark text-info border-info float-right mx-2">Annuler</button>
               </div>
             </div>
+          </div>  
         </section> 
       </div>
       <div class="col-12  col-md-4">
@@ -96,7 +97,7 @@
     
   </main>
 
-
+  <script src="js/newaccount.js"></script>
 
 <?php
   require('footer.php');

@@ -152,7 +152,11 @@ textarea {
     background-color:#17a2b8;
   }
 
-
+  /*----- New account page ----- */
+  #confirm-card {
+    opacity: 0;
+    transition: opacity 0.5s linear;
+  }
 
 
 

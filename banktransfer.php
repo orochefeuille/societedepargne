@@ -1,4 +1,5 @@
 <?php
+$page_title ="Tranférer vers un autre compte | La Société d'épargne";
   require('navbar.php');
   require('header.php');
 ?>
