@@ -23,7 +23,7 @@
   function account_info(string $name) :string {
     $field = "";
     if(isset($_POST['submit'])) {
-      $field = $_POST[$name];
+      $field = htmlspecialchars($_POST[$name]);
     }
     return $field;
   }
