@@ -39,7 +39,7 @@ A project based on Bootstrap4, DOM manipulation with JS, AJAX, JSON and API.
     - Your site is hosted via a GH-page
 
 
-## "Développeur Web et Web Mobile" - week 8 project * Part 2
+## "Développeur Web et Web Mobile" - week 12 project * Part 2
 
 ### Project to be returned: 
     Boosting the thread projectThe board of directors was very satisfied with the first draft of your application and finds it interesting. It therefore gave the IT department the green light to continue the project. 

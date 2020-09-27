@@ -153,8 +153,7 @@ textarea {
   }
 
   /*----- New account page ----- */
-  #confirm-card,
-  #done {
+  #confirm-card {
     opacity: 0;
     transition: opacity 0.5s linear;
   }
