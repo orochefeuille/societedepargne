@@ -39,7 +39,9 @@
       <div class="col-12 col-md-8">
         <section class="newaccount-wrapper">
           <h2 class="text-info mb-5 lead font-weight-bold text-center">Ouvrir un compte en un instant :</h2>
-          <p id="done" class="bg-success text-white text-center">Compte créé avec succès</p>
+          <?php if($account_title && $account_amount) : ?>
+            <p id="done" class="alert alert-success text-center" role="alert">Compte créé avec succès</p>
+          <?php endif; ?>
           <form action="" id="account-creation-form" class="container-fluid text-left" method="POST">
             <div class="form-group">
               <label for="accounts-list">Choisissez un compte :</label>
