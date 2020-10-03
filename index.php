@@ -9,22 +9,6 @@
 
   $accounts = get_accounts();
   $security = get_security();
-
-  //  // Get the credentials info
-  //  function credentials_info(string $name) :string {
-  //   $field = "";
-  //   if(isset($_POST['submit'])) {
-  //     $field = htmlspecialchars($_POST[$name]);
-  //   }
-  //   return $field;
-  // }
-  //   $pseudo = credentials_info("pseudo");
-  //   $mdp = credentials_info("client-password");
-
-  //   // Go to index.php if credentials are OK
-  //   function checkCredentials(string $p, string $m) :bool {
-  //       return ($p == "pseudo" && $m == "mdp") ? true : false;
-  //   }
 ?>
 
   <!-- Main -->
@@ -34,7 +18,7 @@
           <h2 class="text-info mb-5">Tous vos comptes en un coup d'oeil :</h2>
           <div id="articless-wrapper" class="row mx-auto d-flex justify-content-around">
             <?php
-              foreach($accounts as $account): ?>
+              foreach($accounts as $key => $account): ?>
                 <article class="card m-5" style="width: 18rem;">
                   <header class="bg-dark text-white pt-2 pb-1 mb-4">
                     <h3 class="card-title"> <?=  $account['name'];  ?></h3>
@@ -44,7 +28,7 @@
                     <p class="card-text <?=  balance_color($account['amount']); ?>"><?=  $account['amount']; ?> €</p>
                   </div>
                   <footer class="bg-orange my-3 p-2 w-75 rounded mx-auto">
-                    <a href="singleaccount.php?account=<?= $account['name']; ?>" class="card-link text-white">Consulter ce compte</a>
+                    <a href="singleaccount.php?account=<?= $key ?>" class="card-link text-white">Consulter ce compte</a>
                   </footer>
                 </article>
             <?php 
@@ -74,9 +58,9 @@
     <!-- <h2>Bienvenue, merci de vous identifier</h2> -->
   <?php //endif?> 
  
-  <script src="js/main.js"></script>
   <?php
-  require('template/footer.php');
-?>
+    $script="<script src='js/main.js'></script>";
+    require('template/footer.php');
+  ?>
 
   

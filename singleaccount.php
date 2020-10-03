@@ -1,43 +1,30 @@
 <?php
-  function get_url_account_name() :string {
-    $name = "";
-    if(isset($_GET["account"]) && !empty($_GET["account"])) {
-      $name = htmlspecialchars(($_GET["account"]));
-    }
-    return $name;
-  }
-  $account_name = get_url_account_name();
-
-  require('template/navbar.php');
-  $page_title ="Votre $account_name | La Société d'épargne";
-  require('template/header.php');
   require('data/accounts.php');
   $accounts = get_accounts();
-  
-  function get_account_info(array $accounts, string $account_name, string $item) :string {
-    $account_info = "";
-    foreach($accounts as $account){
-      if($account['name'] == $account_name) {
-        $account_info = $account[$item];
-      }
-    }
-    return $account_info;
-  }
+
   require('src/ls_functions.php');
+  $account_index = intval(sanitize_entries($_GET['account']));
+  $account_name = $accounts[$account_index]['name'];
+  $account_number = $accounts[$account_index]['number'];
+  $account_owner = $accounts[$account_index]['owner'];
+  $account_amount = $accounts[$account_index]['amount'];
+  $account_last_operation = $accounts[$account_index]['last_operation'];
+  $page_title ="Votre $account_name | La Société d'épargne";
+
+  require('template/navbar.php');
+  require('template/header.php');
 ?>
   <!-- Main -->
   <main>
     <div class="jumbotron w-75 mx-auto pt-2 ">
       <div class="container">
         <h2 class="text-white bg-orange mt-3 mb-5 p-2  text-center"><?= $account_name ?> </h2>
-        <p class="lead">N° du compte : <span class="ml-3 text-info"><?= get_account_info($accounts, $account_name, 'number') ?></span> </p>
-        <p class="lead">Gestionnaire : <span class="ml-3 text-info"><?= get_account_info($accounts, $account_name, 'owner') ?></span> </p>
-        <p class="lead">Solde : <span class="ml-3 <?= balance_color(floatval(get_account_info($accounts, $account_name, 'amount'))); ?>"><?= get_account_info($accounts, $account_name, 'amount') ?> €</span></p>
-        <p class="lead">Dernière opération : <span class="ml-3 text-info"><?= get_account_info($accounts, $account_name, 'last_operation') ?></span> </p>
+        <p class="lead">N° du compte : <span class="ml-3 text-info"><?= $account_number ?></span> </p>
+        <p class="lead">Gestionnaire : <span class="ml-3 text-info"><?= $account_owner ?></span> </p>
+        <p class="lead">Solde : <span class="ml-3 <?= balance_color(floatval($account_amount)); ?>"><?= $account_amount ?> €</span></p>
+        <p class="lead">Dernière opération : <span class="ml-3 text-info"><?= $account_last_operation ?></span> </p>
       </div>
   </main>
-
-
-  <?php
+<?php
   require('template/footer.php');
 ?>

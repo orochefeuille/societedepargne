@@ -8,4 +8,13 @@
   function balance_color(float $balance) :string {
     return $balance > 0 ? 'text-success' : 'text-danger';
   }
+
+  // Check $_GET value
+  function sanitize_entries(string $input) :string {
+    if(isset($input) && !empty($input)) {
+        $input = htmlspecialchars($input);
+      }
+      return $input;
+  }
+
 ?>
