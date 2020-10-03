@@ -1,10 +1,10 @@
 <?php
-  require('navbar.php');
+  require('template/navbar.php');
 
   $page_title ="Vos comptes | La Société d'épargne";
-  require('header.php');
-  require('accounts.php');
-  require('doc/security.php');
+  require('template/header.php');
+  require('data/accounts.php');
+  require('data/security.php');
 
   $accounts = get_accounts();
   $security = get_security();
@@ -85,7 +85,7 @@
  
   <script src="js/main.js"></script>
   <?php
-  require('footer.php');
+  require('template/footer.php');
 ?>
 
   

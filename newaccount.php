@@ -1,8 +1,8 @@
 <?php
   $page_title ="Ouvrir un compte | La Société d'épargne";
 
-  require('navbar.php');
-  require('header.php');
+  require('template/navbar.php');
+  require('template/header.php');
 
 
   // date in french format
@@ -105,5 +105,5 @@
   <script src="js/newaccount.js"></script>
 
 <?php
-  require('footer.php');
+  require('template/footer.php');
 ?>

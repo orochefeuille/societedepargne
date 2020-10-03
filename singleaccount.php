@@ -8,10 +8,10 @@
   }
   $account_name = get_url_account_name();
 
-  require('navbar.php');
+  require('template/navbar.php');
   $page_title ="Votre $account_name | La Société d'épargne";
-  require('header.php');
-  require('accounts.php');
+  require('template/header.php');
+  require('data/accounts.php');
   $accounts = get_accounts();
   
   function get_account_info(array $accounts, string $account_name, string $item) :string {
@@ -39,5 +39,5 @@
 
 
   <?php
-  require('footer.php');
+  require('template/footer.php');
 ?>

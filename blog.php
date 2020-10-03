@@ -1,7 +1,7 @@
 <?php
   $page_title ="Votre blog | La Société d'épargne";
-  require('navbar.php');
-  require('header.php');
+  require('template/navbar.php');
+  require('template/header.php');
 ?>
   <!-- Main -->
   <main class="container-fluid w-75 text-center">
@@ -11,6 +11,6 @@
   </main>
   
 <?php
-  require('footer.php');
+  require('template/footer.php');
 ?>
 <script src="js/blog.js"></script>

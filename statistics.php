@@ -1,9 +1,9 @@
 <?php
   $page_title ="La finance | La Société d'épargne";
-  require('navbar.php');
-  require('header.php');
+  require('template/navbar.php');
+  require('template/header.php');
 
-  require('doc/savingsrate.php');
+  require('data/savingsrate.php');
   $rate = get_rate();
 ?>
 
@@ -34,5 +34,5 @@
   </main>
 
 <?php
-  require('footer.php');
+  require('template/footer.php');
 ?>
