@@ -23,7 +23,7 @@
     }
     return $account_info;
   }
-
+  require('src/ls_functions.php');
 ?>
   <!-- Main -->
   <main>
@@ -32,7 +32,7 @@
         <h2 class="text-white bg-orange m-3 p-2 text-center"><?= $account_name ?> </h2>
         <p class="lead">N° du compte : <span class="text-info"><?= get_account_info($accounts, $account_name, 'number') ?></span> </p>
         <p class="lead">Gestionnaire : <span class="text-info"><?= get_account_info($accounts, $account_name, 'owner') ?></span> </p>
-        <p class="lead">Solde : <span class="text-info"><?= get_account_info($accounts, $account_name, 'amount') ?> €</span></p>
+        <p class="lead">Solde : <span class="text-info  <?= balance_color(floatval(get_account_info($accounts, $account_name, 'amount'))) ?>"><?= get_account_info($accounts, $account_name, 'amount') ?> €</span></p>
         <p class="lead">Dernière opération : <span class="text-info"><?= get_account_info($accounts, $account_name, 'last_operation') ?></span> </p>
       </div>
   </main>

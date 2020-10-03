@@ -9,8 +9,7 @@
         <h2 class="text-info mb-5 lead font-weight-bold">Des articles spécialisés qui peuvent vous intéresser :</h2>
       </section> 
   </main>
-  
 <?php
-  require('template/footer.php');
+   $script = "<script src='js/blog.js'></script>";
+   require('template/footer.php');
 ?>
-<script src="js/blog.js"></script>
