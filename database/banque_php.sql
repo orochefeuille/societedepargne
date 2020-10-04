@@ -62,7 +62,7 @@ CREATE TABLE Transaction (
 ENGINE = InnoDB;
 -- Transaction table filling 
 INSERT INTO Transaction (date_transaction, amount, is_credit, comments, account_id)
-VALUES  ('2020-05-03 16:35:25', '150.00', '1', 'Joyeux anniversaire fillette', '1'),
-        ('2020-04-26 09:15:22', '50.00', '0', '', '1'),
-        ('2020-04-26 09:15:23', '50.00', '0', '', '2'),
-        ('2020-10-03 22:55:59', '20.00', '0', 'Retrait DAB', '3');
+VALUES  ('2020-05-03 16:35:25', 150.00, 1, 'Joyeux anniversaire fillette', 1),
+        ('2020-04-26 09:15:22', 50.00, 0, '', 1),
+        ('2020-04-26 09:15:23', 50.00, 1, '', 2),
+        ('2020-10-03 22:55:59', 20.00, 0, 'Retrait DAB', 3);
