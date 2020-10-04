@@ -1,6 +1,11 @@
 <?php
   $page_title ="Vos comptes | La Société d'épargne";
 
+  session_start ();
+  if (isset($_SESSION['cred']) != 'allowed' ) {
+    header('Location: http://localhost/societedepargne/login.php');
+  }
+
   require('template/navbar.php');
   require('template/header.php');
   require('data/accounts.php');
