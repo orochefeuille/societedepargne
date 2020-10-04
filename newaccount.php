@@ -1,23 +1,13 @@
 <?php
   $page_title ="Ouvrir un compte | La Société d'épargne";
 
-  require('navbar.php');
-  require('header.php');
-
+  require('template/navbar.php');
+  require('template/header.php');
+  require('src/ls_functions.php');
 
   // date in french format
-  function get_account_creation_date() :string {
-    $date = date('Y-m-d');
-    setlocale(LC_TIME, "fr_FR", "French");
-    $date = strftime("%d %B %G", strtotime($date));
-    return $date;
-  }
-  $account_date = get_account_creation_date();
+  $account_date = get_now();
   
-  // Change the balance color 
-  function balance_color(float $balance) :string {
-    return $balance > 0 ? 'text-success' : 'text-danger';
-  }
 
   // Get the account info
   function account_info(string $name) :string {
@@ -105,5 +95,5 @@
   <script src="js/newaccount.js"></script>
 
 <?php
-  require('footer.php');
+  require('template/footer.php');
 ?>

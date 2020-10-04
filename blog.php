@@ -1,7 +1,7 @@
 <?php
   $page_title ="Votre blog | La Société d'épargne";
-  require('navbar.php');
-  require('header.php');
+  require('template/navbar.php');
+  require('template/header.php');
 ?>
   <!-- Main -->
   <main class="container-fluid w-75 text-center">
@@ -9,8 +9,7 @@
         <h2 class="text-info mb-5 lead font-weight-bold">Des articles spécialisés qui peuvent vous intéresser :</h2>
       </section> 
   </main>
-  
 <?php
-  require('footer.php');
+   $script = "<script src='js/blog.js'></script>";
+   require('template/footer.php');
 ?>
-<script src="js/blog.js"></script>

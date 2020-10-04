@@ -1,16 +1,16 @@
 <?php
   $page_title ="La finance | La Société d'épargne";
-  require('navbar.php');
-  require('header.php');
+  require('template/navbar.php');
+  require('template/header.php');
 
-  require('doc/savingsrate.php');
+  require('data/savingsrate.php');
   $rate = get_rate();
 ?>
 
   <main class="container-fluid w-75 text-center">
     <section class="statistics-wrapper">
       <h2 class="text-info mb-5">Restez informé :</h2>
-      <table class="table table-striped table-dark text-left">
+      <table class="table table-striped table-bordered table-dark text-left">
         <thead>
           <tr>
             <?php foreach($rate[0] as $key => $item): ?>
@@ -34,5 +34,5 @@
   </main>
 
 <?php
-  require('footer.php');
+  require('template/footer.php');
 ?>

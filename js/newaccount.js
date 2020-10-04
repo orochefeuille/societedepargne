@@ -6,7 +6,7 @@ const accountAmount = document.getElementById("account-amount");
 const accountsList = document.getElementById("accounts-list");
 let cardText = document.querySelector(".card-text");
 
-createAccountBtn.addEventListener("click", function(){
+function confirmAccountCreation() {
     if(!accountsList.value){
         accountsList.style.border = "1px solid red";
         
@@ -22,7 +22,21 @@ createAccountBtn.addEventListener("click", function(){
             <span class="text-info">${accountsList.value}</span> pour 
             <span class="text-info"> ${accountAmount.value} €.<s/pan>`;
     }
-})
+}
+
+createAccountBtn.addEventListener("click", confirmAccountCreation);
+accountsList.addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') {
+        e.preventDefault();
+        confirmAccountCreation();
+    }
+});
+accountAmount.addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') {
+        e.preventDefault();
+        confirmAccountCreation();
+    }
+});
 
 cancelBtn.addEventListener("click", function(){
     confirmCard.style.opacity = "0";

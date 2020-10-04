@@ -147,7 +147,7 @@ textarea {
   }
 
   /*----- Statistics page ----- */
-  .table-striped>tbody>tr:nth-child(odd)>td,
+  .table-striped>tbody>tr:nth-child(even)>td,
   tr.found {
     background-color:#17a2b8;
   }
