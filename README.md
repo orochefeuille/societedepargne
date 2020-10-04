@@ -62,3 +62,28 @@ A project based on Bootstrap4, DOM manipulation with JS, AJAX, JSON and API.
     - When creating a bank account apply security checks. For example, check that the type of account is an authorised account type (current, pel, passbook a, perp...). Also check that the minimum amount when opening an account is at least 50 euros.
 
 Translated with www.DeepL.com/Translator (free version)
+
+
+## "Développeur Web et Web Mobile" - week 13 project * Part 3
+
+Over the course of its iterations, your banking application project grows in size. The application gets structured and starts to exploit data in files. Your scrum master believes that it is now time to integrate a database into the application and thus ensure the persistence but also the integrity of the data.you will have a one-week sprint to design and implement a database. To do this you need to understand how the minimum version of the application will work.
+
+### Functional specifications:
+    - The application is only accessible to logged in users 
+    - When a user who is not logged in goes to the application he is redirected to a login page with a form 
+    - A user logs in using an email address and a password - Once logged in, the user only sees his personal bank accounts 
+    - When the user clicks on a bank account, he arrives at a page dedicated to the account where he sees the account information but also the last operations performed on the account
+    
+### Technical specifications: 
+    - DBMS: MySQL
+
+### You will render a SQL file called php_bank. sql. 
+    This file should:
+    - create a database named php_bank but also delete any pre-existing database named php_bank so that your file can always be imported without conflict 
+    - create a user named php_bank and delete any pre-existing user with the same name. You are free to choose his password. This user must only have rights to the banque_php database (in other words, he does not have access to any other databases) 
+    - Create the tables necessary for the application with the types of data that you feel are most relevant and efficient 
+    - Insert at least 2 rows in each table 
+    
+    Think carefully about the information that makes up the tables (if necessary, re-read the PDF of the bank project in JS). Other information may also be necessary, for example is it interesting or legally obligatory to know the date of opening an account? Same for an operation carried out on this account... The report will be made via Teams in the report folder. 
+
+Translated with www.DeepL.com/Translator (free version)
