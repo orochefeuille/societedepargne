@@ -24,7 +24,7 @@
                     <h3 class="card-title"> <?=  $account['name'];  ?></h3>
                   </header>
                   <div class="card-body p-0">
-                    <p class="card-text">Solde au  <?=  $date  ?> :</p>
+                    <p class="card-text">Solde au  <?=  get_now();  ?> :</p>
                     <p class="card-text <?=  balance_color($account['amount']); ?>"><?=  $account['amount']; ?> €</p>
                   </div>
                   <footer class="bg-orange my-3 p-2 w-75 rounded mx-auto">
