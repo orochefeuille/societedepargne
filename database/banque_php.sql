@@ -1,13 +1,14 @@
 -- Delete existing database and user
 DROP DATABASE IF EXISTS banque_php;
-DROP USER IF EXISTS 'banquePHP'@'*';
+DROP USER IF EXISTS 'banquePHP'@'localhost';
 
 -- Create database with utf-8 characters
 CREATE DATABASE banque_php CHARACTER SET 'utf8';
+USE banque_php;
 
 -- Create user and his privileges
 CREATE USER 'banquePHP'@'*' IDENTIFIED BY 'mdp';
-GRANT ALL ON banque_php.* TO 'banquePHP'@'*';
+GRANT ALL ON banque_php.* TO 'banquePHP'@'localhost';
 
 -- Create banque_php tables
 
