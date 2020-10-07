@@ -7,7 +7,7 @@ CREATE DATABASE banque_php CHARACTER SET 'utf8';
 USE banque_php;
 
 -- Create user and his privileges
-CREATE USER 'banquePHP'@'*' IDENTIFIED BY 'mdp';
+CREATE USER 'banquePHP'@'localhost' IDENTIFIED BY 'mdp';
 GRANT ALL ON banque_php.* TO 'banquePHP'@'localhost';
 
 -- Create banque_php tables
