@@ -3,7 +3,7 @@
 
   session_start ();
   if (isset($_SESSION['cred']) != 'allowed' ) {
-    header('Location: http://localhost/societedepargne/login.php');
+    header('Location: http://localhost:8080/societedepargne/login.php');
   }
 
   require('template/navbar.php');

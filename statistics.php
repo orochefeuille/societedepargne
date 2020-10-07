@@ -1,8 +1,13 @@
 <?php
   $page_title ="La finance | La Société d'épargne";
+
+  session_start ();
+  if (isset($_SESSION['cred']) != 'allowed' ) {
+    header('Location: http://localhost:8080/societedepargne/login.php');
+  }
+  
   require('template/navbar.php');
   require('template/header.php');
-
   require('data/savingsrate.php');
   $rate = get_rate();
 ?>
