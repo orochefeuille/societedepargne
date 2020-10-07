@@ -87,3 +87,38 @@ Over the course of its iterations, your banking application project grows in siz
     Think carefully about the information that makes up the tables (if necessary, re-read the PDF of the bank project in JS). Other information may also be necessary, for example is it interesting or legally obligatory to know the date of opening an account? Same for an operation carried out on this account... The report will be made via Teams in the report folder. 
 
 Translated with www.DeepL.com/Translator (free version)
+
+
+## "Développeur Web et Web Mobile" - week 14 project * Part 4
+
+Now that your database is ready, you have a one-week sprint to integrate the following features:
+
+### Functional specifications:
+    - The application is accessible only to logged-in users 
+    - When a non logged-in user goes to the application he is redirected to a login page with a form 
+    - A user logs in with an email address and a password 
+    - A logged-in user can log out
+    - Once logged in, the user only sees his personal bank accounts. 
+    - When the user clicks on a bank account, he or she is taken to a page dedicated to the account where he or she can see the account information and the last operations performed on the account. Once created the account appears on the home page. Please note that the account must meet the minimum requirements for account creation (right type and amount) 
+    - The user can make deposits or withdrawals to the account of his choice.  
+
+### Technical specifications:
+    - PHP7
+    - Using PDO to connect to the database
+    - DBMS: Mysql
+    - Server: Apache2
+    
+    You will create a functional tree structure of the site with the pages and the actions that can be performed on these pages.
+    
+    the rendering will be done via Teams in the folder rendered you will upload a txt file with your name and the link to your GitHub repository. 
+    
+    Ideally the site is also put online on a shared server
+    
+### To go further:
+    - The user can make transfers from one account to another, which creates two new operations 
+    - Error messages may be displayed on the various forms when they are filled out incorrectly 
+    - The user can delete the accounts that belong to him 
+    - On the home page, for each account the user sees the last operation on that account 
+    - The user can access the page of his profile and update his personal information.
+
+Translated with www.DeepL.com/Translator (free version)
