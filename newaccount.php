@@ -1,5 +1,10 @@
 <?php
   $page_title ="Ouvrir un compte | La Société d'épargne";
+  
+  session_start ();
+  if (isset($_SESSION['cred']) != 'allowed' ) {
+    header('Location: http://localhost:8080/societedepargne/login.php');
+  }
 
   require('template/navbar.php');
   require('template/header.php');
