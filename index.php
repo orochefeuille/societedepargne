@@ -9,15 +9,13 @@
   require('template/navbar.php');
   require('template/header.php');
   require('data/accounts.php');
-  require('data/security.php');
   require('src/ls_functions.php');
 
   $accounts = get_accounts();
-  $security = get_security();
 ?>
 
   <!-- Main -->
- <?php //if(checkCredentials($pseudo, $mdp)) :?> 
+ <?php?> 
     <main class="container-fluid w-100 text-center">
         <section class="accounts-vue-wrapper">
           <h2 class="text-info mb-5">Tous vos comptes en un coup d'oeil :</h2>
@@ -42,27 +40,7 @@
           </div>
         </section>
     </main>
-     <!-- Security layer -->
-    <section id="layer" class="container bg-orange text-white">
-      <div class="close-layer text-white">
-          <i class="fas fa-times"></i>
-      </div>
-      <div>
-        <h2 class="text-center font-weight-bolder m-5"><?=  $security["title"]; ?></h2>
-        <p class="font-weight-bolder m-3"><?=  $security["preamble"]; ?></p>
-        <ul class="list-unstyled mx-auto w-75 bg-info">
-        <?php 
-          foreach($security["advices"] as $advice) :?>
-            <li class="font-weight-bolder p-3 pl-5"><?= $advice;?></li>
-          <?php endforeach;?>
-        </ul>
-        <p class="font-weight-bolder text-danger bg-white p-2"><?=  $security["conclusion"]; ?></p>
-      </div>
-    </section>
-  <?php //else:?> 
-    <!-- <h2>Bienvenue, merci de vous identifier</h2> -->
-  <?php //endif?> 
- 
+    
   <?php
     $script="<script src='js/main.js'></script>";
     require('template/footer.php');

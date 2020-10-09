@@ -1,8 +1,16 @@
 <?php
   $page_title ="Se connecter | La Société d'épargne";
 
+  session_start ();
+
   require('template/navbar.php');
   require('template/header.php');
+  require('data/security.php');
+  $security = get_security();
+
+  if(isset($_POST["close"])) {
+    $_SESSION["close"] = 'seen';
+  }
 
   if(!empty($_POST) && isset($_POST["login"])) {
     try {
@@ -20,7 +28,7 @@
     );
     $result = $query->execute(
         [
-            "email" => $_POST["email"]
+            "email" => htmlspecialchars($_POST["email"])
         ]
     );
 
@@ -29,8 +37,7 @@
     $danger_div = '<div class="danger-div alert alert-danger w-75 mx-auto my-0 text-center">Les identifiants ne sont pas corrects</div>';
     if($user) {
       // if(password_verify($_POST["client-password"], $user["pass"])) {
-        if($_POST["client-password"] == $user["pass"]) {
-        session_start();
+      if($_POST["client-password"] == $user["pass"]) {
         $_SESSION["user"] = $user;
         header('Location: http://localhost/societedepargne/index.php');
       }
@@ -57,6 +64,29 @@
     <button type="submit" name="login" class="btn bg-orange text-white">Se connecter</button>
     </form>
   </main>
+
+  <?php if (!isset($_SESSION['close'])):?>
+      <!-- Security layer -->
+    <section id="layer" class="container bg-orange text-white">
+      <form action="" method="post">
+        <input class="close-layer text-white" type="submit" value="X" name="close">
+      </form>
+      <!-- <div >
+          <i class="fas fa-times"></i>
+      </div> -->
+      <div>
+        <h2 class="text-center font-weight-bolder m-5"><?=  $security["title"]; ?></h2>
+        <p class="font-weight-bolder m-3"><?=  $security["preamble"]; ?></p>
+        <ul class="list-unstyled mx-auto w-75 bg-info">
+        <?php 
+          foreach($security["advices"] as $advice) :?>
+            <li class="font-weight-bolder p-3 pl-5"><?= $advice;?></li>
+          <?php endforeach;?>
+        </ul>
+        <p class="font-weight-bolder text-danger bg-white p-2"><?=  $security["conclusion"]; ?></p>
+      </div>
+    </section>
+  <?php  endif;?>
 
 <?php
   $script = "<script src='js/login.js'></script>";

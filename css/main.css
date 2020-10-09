@@ -129,6 +129,15 @@ textarea {
     font-weight: bold;
     color: #DF7D49;
   }
+  
+  .is-active {
+    color: #17a2b8 !important;
+  }
+
+  .newaccount-is-active {
+    background-color: #17a2b8 !important;
+  }
+  
     /********** Home **********/
       /*----- Cards account -----*/
   .card {
@@ -150,6 +159,9 @@ textarea {
     float: right;
     margin-top: 1rem;
     margin-right: 0.5rem;
+    background-color: #DF7D49;
+    border: none;
+    font-weight: bolder;
   }
 
   .close-layer:hover {
