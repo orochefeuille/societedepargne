@@ -169,6 +169,12 @@ textarea {
     transition: opacity 0.5s linear;
   }
 
+  /*----- Login page ----- */
+  .danger-div {
+    opacity: 1;
+    transition: opacity 0.5s linear;
+  }
+
 
 
 
