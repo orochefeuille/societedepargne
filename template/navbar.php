@@ -1,4 +1,3 @@
-
   <!-- Navigation bar -->
   <nav class="navbar navbar-expand-lg navbar-light bg-white">
     <a class="navbar-brand" href="index.php"><img src="img/brand.png" alt="Logo de la société"></a>
@@ -14,5 +13,10 @@
         <a class="nav-link font-weight-bold p-2" href="blog.php">Blog</a>
         <a class="nav-link font-weight-bold p-2" href="#" tabindex="-1" aria-disabled="true"></a>
       </div>
+      <?php if (isset($_SESSION['user'])) :?>
+        <div class="connection">
+          <a href="disconnection.php">Se déconnecter</a>
+        </div>
+      <?php endif;?>
     </div>
   </nav>
