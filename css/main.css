@@ -115,8 +115,19 @@ textarea {
 }
 
   /********** Menu **********/
-  .navbar-light .navbar-nav .nav-link.active {
-    color: #17A2B8;
+  .connection a {
+    color: #DF7D49;
+    font-size: 0.75rem;
+    text-decoration: none;
+    margin: 0.5rem;
+    padding: 10px;
+    border: solid 1px #DF7D49;
+    border-radius: 3px;
+  }
+
+  .connection a:hover {
+    font-weight: bold;
+    color: #DF7D49;
   }
     /********** Home **********/
       /*----- Cards account -----*/
@@ -155,6 +166,12 @@ textarea {
   /*----- New account page ----- */
   #confirm-card {
     opacity: 0;
+    transition: opacity 0.5s linear;
+  }
+
+  /*----- Login page ----- */
+  .danger-div {
+    opacity: 1;
     transition: opacity 0.5s linear;
   }
 

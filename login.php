@@ -6,7 +6,7 @@
 
   if(!empty($_POST) && isset($_POST["login"])) {
     try {
-        $db = new PDO('mysql:host=localhost;dbname=banque_php','root', '');
+        $db = new PDO('mysql:host=localhost;dbname=ls_bank','root', '');
     } catch (PDOException $e) {
         print "Erreur !: " . $e->getMessage() . "<br/>";
         die();
@@ -25,18 +25,21 @@
     );
 
     $user = $query->fetch(PDO::FETCH_ASSOC);
+
+    $danger_div = '<div class="danger-div alert alert-danger w-75 mx-auto my-0 text-center">Les identifiants ne sont pas corrects</div>';
     if($user) {
-      if(password_verify($_POST["client-password"], $user["pass"])) {
+      // if(password_verify($_POST["client-password"], $user["pass"])) {
+        if($_POST["client-password"] == $user["pass"]) {
         session_start();
         $_SESSION["user"] = $user;
-        header("location:http://localhost:8080/societedepargne/index.php'");
+        header('Location: http://localhost/societedepargne/index.php');
       }
       else {
-        echo '<div class="alert alert-danger w-75 mx-auto my-0 text-center">Les identifiants ne sont pas corrects</div>';
+        echo $danger_div;
       }
     }
     else {
-      echo '<div class="alert alert-danger w-75 mx-auto my-0 text-center">Les identifiants ne sont pas corrects</div>';
+      echo $danger_div;
     }
   }
 ?>
@@ -56,6 +59,6 @@
   </main>
 
 <?php
-  $script = null;
+  $script = "<script src='js/login.js'></script>";
   require('template/footer.php');
 ?>

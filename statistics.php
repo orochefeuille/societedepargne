@@ -2,8 +2,8 @@
   $page_title ="La finance | La Société d'épargne";
 
   session_start ();
-  if (isset($_SESSION['cred']) != 'allowed' ) {
-    header('Location: http://localhost:8080/societedepargne/login.php');
+  if (!isset($_SESSION['user'])) {
+    header('Location: http://localhost/societedepargne/login.php');
   }
   
   require('template/navbar.php');
