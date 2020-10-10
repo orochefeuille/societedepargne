@@ -36,8 +36,7 @@
 
     $danger_div = '<div class="danger-div alert alert-danger w-75 mx-auto my-0 text-center">Les identifiants ne sont pas corrects</div>';
     if($user) {
-      // if(password_verify($_POST["client-password"], $user["pass"])) {
-      if($_POST["client-password"] == $user["pass"]) {
+      if(password_verify($_POST["client-password"], $user["pass"])) {
         $_SESSION["user"] = $user;
         header('Location: http://localhost/societedepargne/index.php');
       }
@@ -71,9 +70,6 @@
       <form action="" method="post">
         <input class="close-layer text-white" type="submit" value="X" name="close">
       </form>
-      <!-- <div >
-          <i class="fas fa-times"></i>
-      </div> -->
       <div>
         <h2 class="text-center font-weight-bolder m-5"><?=  $security["title"]; ?></h2>
         <p class="font-weight-bolder m-3"><?=  $security["preamble"]; ?></p>
