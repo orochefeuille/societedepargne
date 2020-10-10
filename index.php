@@ -41,7 +41,7 @@
                     <p class="card-text <?=  balance_color($account['balance']); ?>"><?=  $account['balance']; ?> €</p>
                   </div>
                   <footer class="bg-orange my-3 p-2 w-75 rounded mx-auto">
-                    <a href="singleaccount.php?account=<?= $key ?>" class="card-link text-white">Consulter ce compte</a>
+                    <a href="singleaccount.php?account=<?= $key ?>" class="card-link text-white">Gérer ce compte</a>
                   </footer>
                 </article>
             <?php 

@@ -9,6 +9,7 @@
   require('template/navbar.php');
   require('template/header.php');
   require('src/ls_functions.php');
+  require('data/bank_accounts.php');
 
   // Get the account info
   function account_info(string $name) :string {
@@ -25,10 +26,10 @@
   $account_iban =  generate_iban();
   $now = date("d M Y");
   $date = strtotime(date("M d Y H:i:s"));
+  $db = db_connection();
 
   // Write new account info in database
   if(!empty($_POST) && isset($_POST["submit"])) {
-    $db = db_connection();
     $query = $db->prepare(
       'INSERT INTO account(label, iban, balance, customer_id) 
       VALUES(:label, :iban, :balance, :customer_id)'              
@@ -43,6 +44,24 @@
         ]
     );
   }
+
+  // get user's accounts label in database
+  $query = $db->prepare('SELECT label 
+                       FROM account
+                       WHERE customer_id= :id');
+  $result = $query->execute(
+      [
+          "id" => $_SESSION["user"]["id"]
+      ]
+  );
+  $accounts_label = $query->fetchAll(PDO::FETCH_ASSOC);
+
+  // Will display only available accounts for creating a new account
+  $accounts_name=[];
+  foreach($accounts_label as $account_label) {
+    array_push($accounts_name, $account_label["label"]);
+  }
+  $unique_accounts = get_available_accounts();
 ?>
   <main class="container-fluid">
     <div class="row w-100">
@@ -57,11 +76,13 @@
               <label for="accounts-list">Choisissez un compte :</label>
               <select class="form-control" id="accounts-list" name="new-account" required>
                 <option value="" disabled selected >-- Choisir --</option>
-                <option>Compte courant</option>
-                <option>Livret A</option>
-                <option>Plan Epargne Logement (PEL)</option>
-                <option>Livret de développement durable (LDD)</option>
-                <option>Livret d’épargne populaire (LEP)</option>
+                <option >Compte courant</option>
+                <?php foreach($unique_accounts as $unique_account): 
+                        if(!in_array($unique_account, $accounts_name)):?>
+                          <option><?= $unique_account ?> </option>
+                <?php 
+                        endif;
+                      endforeach; ?>
               </select>
             </div>
             <div class="form-group">

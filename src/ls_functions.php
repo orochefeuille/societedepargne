@@ -19,7 +19,7 @@
   }
 
   // Connection to database
-  function generate_iban() {
+  function generate_iban() :string {
     $iban = rand(1000, 9999) . ' '. rand(1000, 9999) . ' '. rand(1000, 9999) . ' '. rand(1000, 9999);
     return $iban;
   }
