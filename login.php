@@ -5,6 +5,7 @@
 
   require('template/navbar.php');
   require('template/header.php');
+  require('src/ls_functions.php');
   require('data/security.php');
   $security = get_security();
 
@@ -13,12 +14,7 @@
   }
 
   if(!empty($_POST) && isset($_POST["login"])) {
-    try {
-        $db = new PDO('mysql:host=localhost;dbname=ls_bank','root', '');
-    } catch (PDOException $e) {
-        print "Erreur !: " . $e->getMessage() . "<br/>";
-        die();
-    }
+    $db = db_connection();
 
     $query = $db->prepare(
         "SELECT * 
