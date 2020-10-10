@@ -8,7 +8,6 @@
 
   require('template/navbar.php');
   require('template/header.php');
-  require('data/accounts.php');
   require('src/ls_functions.php');
 
   // Get all customer's accounts from database
@@ -38,7 +37,7 @@
                     <h3 class="card-title"> <?=  $account['label'];  ?></h3>
                   </header>
                   <div class="card-body p-0">
-                    <p class="card-text">Solde au  <?=  get_now();  ?> :</p>
+                    <p class="card-text">Solde au  <?=  date('d-m-Y');  ?> :</p>
                     <p class="card-text <?=  balance_color($account['balance']); ?>"><?=  $account['balance']; ?> €</p>
                   </div>
                   <footer class="bg-orange my-3 p-2 w-75 rounded mx-auto">

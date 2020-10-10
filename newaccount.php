@@ -10,10 +10,6 @@
   require('template/header.php');
   require('src/ls_functions.php');
 
-  // date in french format
-  $account_date = get_now();
-  
-
   // Get the account info
   function account_info(string $name) :string {
     $field = "";
@@ -25,10 +21,29 @@
 
   $account_title =  account_info('new-account');
   $account_amount =  account_info('account-amount');
-  $account_owner =  'Mr Gossart Thomas';
-  $account_number =  "N:0132520024 fr 45";
-?>
+  $account_owner =  $_SESSION['user']['firstname'] . " " .$_SESSION['user']['lastname'];
+  $account_iban =  generate_iban();
+  $now = date("d M Y");
+  $date = strtotime(date("M d Y H:i:s"));
 
+  // Write new account info in database
+  if(!empty($_POST) && isset($_POST["submit"])) {
+    $db = db_connection();
+    $query = $db->prepare(
+      'INSERT INTO account(label, iban, balance, customer_id) 
+      VALUES(:label, :iban, :balance, :customer_id)'              
+    );
+    $result = $query->execute(
+        [
+            "label" => htmlspecialchars($account_title), 
+            "iban" => $account_iban, 
+
+            "balance" => htmlspecialchars($account_amount), 
+            "customer_id" => $_SESSION['user']['id']
+        ]
+    );
+  }
+?>
   <main class="container-fluid">
     <div class="row w-100">
       <div class="col-12 col-md-8">
@@ -71,7 +86,7 @@
       <?php if($account_title && $account_amount) : ?>
         <div class="col-12  col-md-4">
         <aside class="text-center">
-          <h2 class="text-info mb-5 lead font-weight-bold text-center">Compte créé le <?= $account_date; ?></h2>
+          <h2 class="text-info mb-5 lead font-weight-bold text-center">Compte créé le <?= $now; ?></h2>
           <div id="articless-wrapper" class="row mx-auto d-flex justify-content-around">
             <article class="card m-5" style="width: 18rem;">
               <header class="bg-dark text-white pt-2 pb-1 mb-4">
@@ -79,7 +94,7 @@
               </header>
               <div class="card-body p-0">
                 <p class="card-text">N° du compte :</p>
-                <p class="text-info"><?= $account_number; ?></p>
+                <p class="text-info"><?= $account_iban; ?></p>
                 <p class="card-text">Gestionnaire :</p>
                 <p class="text-info"><?= $account_owner; ?></p> 
                 <p class="card-text">Solde :</p>

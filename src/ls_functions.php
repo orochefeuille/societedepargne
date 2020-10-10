@@ -1,11 +1,4 @@
 <?php
-    // date in french format
-    function get_now() {
-        $date = date('Y-m-d');
-        setlocale(LC_TIME, "fr_FR", "French");
-        return $date = strftime("%d %B %G", strtotime($date));
-    }
-
   // Change the balance color 
   function balance_color(float $balance) :string {
     return $balance > 0 ? 'text-success' : 'text-danger';
@@ -23,6 +16,12 @@
         }
     }
     return $input;
+  }
+
+  // Connection to database
+  function generate_iban() {
+    $iban = rand(1000, 9999) . ' '. rand(1000, 9999) . ' '. rand(1000, 9999) . ' '. rand(1000, 9999);
+    return $iban;
   }
 
   // Connection to database
