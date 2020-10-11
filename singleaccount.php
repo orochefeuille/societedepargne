@@ -13,9 +13,10 @@
 
   // Get single account information from database
   $db = db_connection();
+  
   $query = $db->prepare(' SELECT a.label, a.iban, a.date_creation, a.balance, 
                                  c.firstname, c.lastname,
-                                 o.date_transaction, o.amount, o.comments, o.is_credit,
+                                 o.amount, o.is_credit,
                                  a.balance + SUM(IF(o.amount AND o.is_credit, o.amount, o.amount * -1)) AS total     
                           FROM account AS a
                           INNER JOIN customer AS c
@@ -23,6 +24,7 @@
                           LEFT JOIN operation AS o
                             ON a.id = o.account_id
                           WHERE a.label = :label AND a.customer_id= :id
+                          GROUP BY a.id
                         ' );
   $query->execute(
       [
@@ -31,13 +33,23 @@
       ]
   );
   $query1 = $query->fetch(PDO::FETCH_ASSOC);
-  $query->execute(
-    [
-        "label" => $account_label,
-        "id" => $_SESSION['user']['id']
-    ]
+
+  // Get last transactions
+  $query2 = $db->prepare(' SELECT o.date_transaction, o.amount, o.comments, o.is_credit
+                          FROM account AS a
+                          INNER JOIN customer AS c
+                            ON a.customer_id = c.id
+                          LEFT JOIN operation AS o
+                            ON a.id = o.account_id
+                          WHERE a.label = :label AND a.customer_id= :id
+                        ' );
+  $query2->execute(
+      [
+          "label" => $account_label,
+          "id" => $_SESSION['user']['id']
+      ]
   );
-  $query2 = $query->fetchAll(PDO::FETCH_ASSOC);
+  $query2 = $query2->fetchAll(PDO::FETCH_ASSOC);
 ?>
   <!-- Main -->
   <main>
