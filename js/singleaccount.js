@@ -6,32 +6,32 @@ let singleForm = document.getElementById("single-form");
 let deleteBtn = document.getElementById("delete-btn");
 
 creditBtn.addEventListener("click", function() {
-    singleForm.classList.remove("opacity-0");
-    deditBtn.classList.add("opacity-0");
-    deleteBtn.classList.add("opacity-0");
-    validateBtn.setAttribute("name", "validate-credit");
+    singleForm.classList.remove("d-none");
+    deditBtn.classList.add("d-none");
+    deleteBtn.classList.add("d-none");
+    validateBtn.setAttribute("value", "1");
 });
 
 deditBtn.addEventListener("click", function() {
-    singleForm.classList.remove("opacity-0");
-    creditBtn.classList.add("opacity-0");
-    deleteBtn.classList.add("opacity-0");
-    validateBtn.setAttribute("name", "validate-debit");
+    singleForm.classList.remove("d-none");
+    creditBtn.classList.add("d-none");
+    deleteBtn.classList.add("d-none");
+    validateBtn.setAttribute("value", "0");
 });
 
 cancelBtn.addEventListener("click", function() {
-    singleForm.classList.add("opacity-0");
-    creditBtn.classList.remove("opacity-0");
-    deditBtn.classList.remove("opacity-0");
-    deleteBtn.classList.remove("opacity-0");
-    validateBtn.setAttribute("name", "");
+    singleForm.classList.add("d-none");
+    creditBtn.classList.remove("d-none");
+    deditBtn.classList.remove("d-none");
+    deleteBtn.classList.remove("d-none");
+    validateBtn.setAttribute("value", "");
 });
 
 validateBtn.addEventListener("click", function() {
-    singleForm.classList.add("opacity-0");
-    creditBtn.classList.remove("opacity-0");
-    deditBtn.classList.remove("opacity-0");
-    deleteBtn.classList.remove("opacity-0");
+    singleForm.classList.add("d-none");
+    creditBtn.classList.remove("d-none");
+    deditBtn.classList.remove("d-none");
+    deleteBtn.classList.remove("d-none");
 });
 
 

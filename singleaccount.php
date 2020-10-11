@@ -3,7 +3,8 @@
   if (!isset($_SESSION['user'])) {
     header('Location: http://localhost/societedepargne/login.php');
   }
-  $account_label = htmlspecialchars($_GET['account']);
+  $account_label = htmlspecialchars($_GET['account-label']);
+  $account_index = htmlspecialchars($_GET['account-index']);
 
   $page_title = $account_label . " | La Société d'épargne";
 
@@ -12,7 +13,24 @@
   require('template/header.php');
 
   $db = db_connection();
+  // write operation in database
+  if(!empty($_POST) && (isset($_POST["validate-transaction"]))) {
+    $is_credit = $_POST["validate-transaction"];
+    $amount = floatval(htmlspecialchars($_POST["single-operation"]));
 
+    $query3 = $db->prepare(
+      'INSERT INTO operation(amount, is_credit, comments, account_id) 
+       VALUES(:amount, :is_credit, :comments, :account_id)'              
+    );
+    $result = $query3->execute(
+        [
+            "amount" =>  $amount, 
+            "is_credit" => $is_credit, 
+            "comments" => htmlspecialchars($_POST["comments"]),
+            "account_id" => $account_index
+        ]
+    );
+  }
   // Get single account information from database
   $query = $db->prepare(' SELECT a.label, a.iban, a.date_creation, a.balance, 
                                  c.firstname, c.lastname,
@@ -72,8 +90,8 @@
               <?php if(!$query["is_credit"]):
                 $query["amount"] = $query["amount"] * -1;
               endif; ?>
+            le <span class="text-info"> <?= date('d-m-Y', strtotime($query["date_transaction"])); ?> : </span>
               <span class="ml-2 <?= balance_color(floatval($query["amount"])); ?>"><?= $query["amount"]; ?> €</span>
-              le <span class="text-info"> <?= date('d-m-Y', strtotime($query["date_transaction"])); ?></span> 
               <?php if($query["comments"]): ?>
               motif :  <span class="text-info"> <?= $query["comments"] ?></span> 
               <?php endif; ?>
@@ -85,18 +103,18 @@
           <button type="button" class="btn bg-orange text-white" id="credit-btn">Créditer ce compte</button>
           <button type="button" class="btn bg-orange text-white" id="dedit-btn">Déditer ce compte</button>
           <button type="submit" name="delete_account" id="delete-btn" class="btn bg-danger text-white">Supprimer</button>
-        <form class="container mt-2 opacity-0" action="" method="post" id="single-form">
+        <form class="container mt-2 d-none" action="" method="post" id="single-form">
           <div class="form-group">
             <label for="single-operation">Montant (obligatoire) :</label>
-            <input class="w-100" type="number" value="valider" name="single-operation" min="0" required>
+            <input class="w-100" type="number" value="valider" name="single-operation" min="0" step="0.01" required>
           </div>
           <div class="form-group">
             <label for="single-textarea">Motif (non obligatoire):</label>
-            <textarea  class="w-100" name="single-textarea" rows="1"></textarea>
+            <textarea  class="w-100" name="comments" rows="1"></textarea>
           </div>
           <div class="form-group">
-            <input type="button" value="annuler" id="cancel-transaction" class="btn bg-info text-white" >
-            <input type="submit" value="valider" name="" id="validate-transaction" class="btn bg-success text-white" >
+            <button type="button" id="cancel-transaction" class="btn bg-info text-white" >Annuler</button>
+            <button type="submit" value="" name="validate-transaction" id="validate-transaction" class="btn bg-success text-white">Valider</button>
           </div>
         </form>
       </div>
