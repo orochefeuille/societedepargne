@@ -36,9 +36,9 @@
                             ON a.customer_id = c.id
                           LEFT JOIN operation AS o
                             ON a.id = o.account_id
-                          WHERE a.customer_id= :id
+                          WHERE a.customer_id= :id 
                           GROUP BY a.label
-                          -- ORDER BY MAX(o.date_transaction) DESC
+                          ORDER BY MAX(o.date_transaction) DESC
                         ' );
   $query->execute(
       [
@@ -46,7 +46,7 @@
       ]
   );
   $operation = $query->fetchAll(PDO::FETCH_ASSOC);
-  var_dump($operation);
+  print_r($operation);
   // Get all customer's accounts from database
   $db = db_connection();
   $query = $db->prepare('SELECT id, label, balance 
