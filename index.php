@@ -29,6 +29,24 @@
       ]
   );
   $balances = $query->fetchAll(PDO::FETCH_ASSOC);
+  // Calculate Balance after transactions
+  $query = $db->prepare(' SELECT a.label, o.amount, MAX(o.date_transaction) AS last_operation 
+                          FROM account AS a
+                          INNER JOIN customer AS c
+                            ON a.customer_id = c.id
+                          LEFT JOIN operation AS o
+                            ON a.id = o.account_id
+                          WHERE a.customer_id= :id
+                          GROUP BY a.label
+                          -- ORDER BY MAX(o.date_transaction) DESC
+                        ' );
+  $query->execute(
+      [
+          "id" => $_SESSION['user']['id']
+      ]
+  );
+  $operation = $query->fetchAll(PDO::FETCH_ASSOC);
+  var_dump($operation);
   // Get all customer's accounts from database
   $db = db_connection();
   $query = $db->prepare('SELECT id, label, balance 
@@ -62,6 +80,8 @@
                     <?php else: ?>
                       <p class="card-text <?=  balance_color($account['balance']); ?>"><?=  $account['balance']; ?> €</p>
                     <?php endif; ?>
+                    <p class="card-text">Dernière opération :</p>
+                    <p class="card-text"><?=  date('d-m-Y');  ?> :</p>
                   </div>
                   <footer class="bg-orange my-3 p-2 w-75 rounded mx-auto">
                     <a href="singleaccount.php?account-label=<?= $account['label']; ?>&account-index=<?= $account['id']; ?>" class="card-link text-white">Gérer ce compte</a>
