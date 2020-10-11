@@ -4,20 +4,6 @@
     return $balance > 0 ? 'text-success' : 'text-danger';
   }
 
-  // Check $_GET value
-  function sanitize_entries(string $input, string $input_name = null) :string {
-    if($input_name) {
-        if(isset($input))
-        $input = htmlspecialchars($input_name);
-    }
-    else {
-        if(isset($input) && !empty($input)) {
-            $input = htmlspecialchars($input);
-        }
-    }
-    return $input;
-  }
-
   // Connection to database
   function generate_iban() :string {
     $iban = rand(1000, 9999) . ' '. rand(1000, 9999) . ' '. rand(1000, 9999) . ' '. rand(1000, 9999);
