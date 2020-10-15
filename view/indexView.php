@@ -16,6 +16,6 @@
  </main>
 
  <?php
-    $script="<script src='js/main.js'></script>";
+    $script="<script src='public/js/main.js'></script>";
     require('template/footer.php');
   ?>
