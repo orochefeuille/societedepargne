@@ -122,3 +122,7 @@ Now that your database is ready, you have a one-week sprint to integrate the fol
     - The user can access the page of his profile and update his personal information.
 
 Translated with www.DeepL.com/Translator (free version)
+
+## "Développeur Web et Web Mobile" - week 15 project * Part 5
+
+    Begin to restructure this main project towards the MVC pattern and the POO paradigm 
