@@ -1,10 +1,11 @@
 <?php 
   $current_page = $_SERVER['REQUEST_URI'];
+  var_dump($current_page);
 ?>
   
   <!-- Navigation bar -->
   <nav class="navbar navbar-expand-lg navbar-light bg-white">
-    <a class="navbar-brand" href="index.php"><img src="img/brand.png" alt="Logo de la société"></a>
+    <a class="navbar-brand" href="index.php"><img src="public/img/brand.png" alt="Logo de la société"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
