@@ -1,8 +1,9 @@
 <?php
+require "db_connection.php";
+$dbConnexion = new DbConnection();
+$db= $dbConnexion->getDb();
 
 if(!empty($_POST) && isset($_POST["login"])) {
-    $db = db_connection();
-
     $query = $db->prepare(
         "SELECT * 
          FROM customer 
@@ -16,4 +17,6 @@ if(!empty($_POST) && isset($_POST["login"])) {
     );
 
     $user = $query->fetch(PDO::FETCH_ASSOC);
+    var_dump($user);
+ 
 }

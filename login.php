@@ -1,6 +1,5 @@
 <?php
-  $page_title ="Se connecter | La Société d'épargne";
- 
+    require "model/loginDAO.php";
  // Close the security alert and this won't display again while the user session
   if(isset($_POST["close"])) {
     $_SESSION["close"] = 'seen';
