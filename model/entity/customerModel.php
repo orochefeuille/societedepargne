@@ -44,7 +44,7 @@ class Customer {
     }
 
     public function getLastname() :string {
-        return $this->firstname;
+        return $this->lastname;
     }
 
     public function setEmail(string $email) {

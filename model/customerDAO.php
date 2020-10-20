@@ -3,7 +3,6 @@ require "db_connection.php";
 
 class CustomerDAO {
     private $db;
-    private $array;
 
     public function __construct()
     {

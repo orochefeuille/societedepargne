@@ -1,6 +1,5 @@
 <?php 
   $current_page = $_SERVER['REQUEST_URI'];
-  var_dump($current_page);
 ?>
   
   <!-- Navigation bar -->
@@ -18,7 +17,7 @@
         <a class="nav-link font-weight-bold p-2 <?php if($current_page=='/societedepargne/blog.php'){echo 'is-active';}?>" href="blog.php">Blog</a>
         <a class="nav-link font-weight-bold p-2" href="#" tabindex="-1" aria-disabled="true"></a>
       </div>
-      <?php if (isset($_SESSION['user'])) :?>
+      <?php if (isset($_SESSION['id'])) :?>
         <div class="connection">
           <a href="disconnection.php">Se déconnecter</a>
         </div>
