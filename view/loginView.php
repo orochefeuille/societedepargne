@@ -34,8 +34,13 @@
     </div>
   </main>
 
-  <?php if (!isset($_SESSION['close'])):?>
-      <!-- Security layer -->
+  <?php 
+    // Close the security alert and this won't display again while the user session
+    if(isset($_POST["close"])) {
+      $_SESSION["close"] = 'seen';
+    } 
+    if (!isset($_SESSION['close'])):?>
+    <!-- Security layer -->
     <section id="layer" class="container bg-orange text-white">
       <form action="" method="post">
         <input class="close-layer text-white" type="submit" value="X" name="close">
@@ -53,10 +58,7 @@
       </div>
     </section>
   <?php  endif;
-    // Close the security alert and this won't display again while the user session
-    if(isset($_POST["close"])) {
-      $_SESSION["close"] = 'seen';
-    } 
+    
   ?>
 <?php
   $script = "<script src='public/js/login.js'></script>";
