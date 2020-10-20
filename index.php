@@ -1,6 +1,6 @@
 <?php
   require "model/accountDAO.php";
-  require "model/entity/accountModel.php";   
+  require "model/entity/account.php";   
   // require "model/operationDAO.php";
   // require "model/entity/operationModel.php";
   $accountDAO = new accountDAO();

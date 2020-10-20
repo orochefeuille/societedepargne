@@ -1,5 +1,5 @@
 <?php
-  require "model/entity/customerModel.php";
+  require "model/entity/customer.php";
   require "model/customerDAO.php";
   $customerDAO = new CustomerDAO();
   $is_allowed_user = true;
