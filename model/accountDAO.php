@@ -26,7 +26,7 @@
                 ]
             );
   
-            $customer_accounts= $query->fetchAll(PDO::FETCH_ASSOC);
+            $customer_accounts= $query->fetchAll(PDO::FETCH_CLASS, "Account");
             return $customer_accounts;
         }
     }
