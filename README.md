@@ -122,3 +122,22 @@ Now that your database is ready, you have a one-week sprint to integrate the fol
     - The user can access the page of his profile and update his personal information.
 
 Translated with www.DeepL.com/Translator (free version)
+
+## "Développeur Web et Web Mobile" - week 16 project * Part 5
+
+    Now that your application is online, many bugs and enhancement requests have been reported to your product owner. The project squad is already working on their resolution but the work is more complicated than expected. It is difficult to intervene in the code but also to understand the organization of the application and the implementation of the functionalities.
+
+So a meeting was organized with the project team by the scrum master and you decided to make the application evolve to an object oriented application organized with the MVC pattern.
+
+No new features but your code has to be written in object oriented wherever possible and you re-invoice the application between model view and controller.
+
+As far as SQL queries are concerned, you set up the minimum transactions on the debit and credit operation.
+
+This means you make a class diagram. In order to manage also the progress of the code, you will continue to use the Kanban previously made and that of course you always have now up to date.
+
+To go further :
+- Integrate a new table in your application that will store the types of bank accounts allowed and use this table for everything concerning the types of accounts. 
+- Among the users, integrate the role of advisor. Indeed all your users are for the moment ordinary users but normally the application would also be accessible to bankers. The bankers have a list of clients from which they can access accounts and information.
+ - Offer the logged-in user the possibility to modify his profile information via a form. Some information such as age cannot be changed, but the address for example can be changed.
+
+Translated with www.DeepL.com/Translator (free version)

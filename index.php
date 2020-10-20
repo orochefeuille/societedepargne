@@ -9,7 +9,44 @@
   require('template/navbar.php');
   require('template/header.php');
   require('src/ls_functions.php');
+  $db = db_connection();
 
+  // Calculate Balance after transactions
+  $query = $db->prepare(' SELECT a.balance, 
+                                 o.amount, o.is_credit,
+                                 a.balance + SUM(IF(o.amount AND o.is_credit, o.amount, o.amount * -1)) AS total     
+                          FROM account AS a
+                          INNER JOIN customer AS c
+                            ON a.customer_id = c.id
+                          LEFT JOIN operation AS o
+                            ON a.id = o.account_id
+                          WHERE a.customer_id= :id
+                          GROUP BY a.id
+                        ' );
+  $query->execute(
+      [
+          "id" => $_SESSION['user']['id']
+      ]
+  );
+  $balances = $query->fetchAll(PDO::FETCH_ASSOC);
+  // Calculate Balance after transactions
+  $query = $db->prepare(' SELECT a.label, o.amount, MAX(o.date_transaction) AS last_operation 
+                          FROM account AS a
+                          INNER JOIN customer AS c
+                            ON a.customer_id = c.id
+                          LEFT JOIN operation AS o
+                            ON a.id = o.account_id
+                          WHERE a.customer_id= :id 
+                          GROUP BY a.label
+                          ORDER BY MAX(o.date_transaction) DESC
+                        ' );
+  $query->execute(
+      [
+          "id" => $_SESSION['user']['id']
+      ]
+  );
+  $operation = $query->fetchAll(PDO::FETCH_ASSOC);
+  print_r($operation);
   // Get all customer's accounts from database
   $db = db_connection();
   $query = $db->prepare('SELECT id, label, balance 
@@ -38,15 +75,19 @@
                   </header>
                   <div class="card-body p-0">
                     <p class="card-text">Solde au  <?=  date('d-m-Y');  ?> :</p>
-                    <p class="card-text <?=  balance_color($account['balance']); ?>"><?=  $account['balance']; ?> €</p>
+                    <?php if($balances[$key]['total']): ?>
+                      <p class="card-text <?=  balance_color($balances[$key]['total']); ?>"><?=  $balances[$key]['total']; ?> €</p>
+                    <?php else: ?>
+                      <p class="card-text <?=  balance_color($account['balance']); ?>"><?=  $account['balance']; ?> €</p>
+                    <?php endif; ?>
+                    <p class="card-text">Dernière opération :</p>
+                    <p class="card-text"><?=  date('d-m-Y');  ?> :</p>
                   </div>
                   <footer class="bg-orange my-3 p-2 w-75 rounded mx-auto">
                     <a href="singleaccount.php?account-label=<?= $account['label']; ?>&account-index=<?= $account['id']; ?>" class="card-link text-white">Gérer ce compte</a>
                   </footer>
                 </article>               
-            <?php 
-              endforeach;
-            ?>
+            <?php endforeach; ?>
           </div>
         </section>
     </main>
