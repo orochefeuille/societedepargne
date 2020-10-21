@@ -1,13 +1,10 @@
 <?php
-    require "db_connection.php";
-
     class accountDAO {
         private $db;
 
-        public function __construct()
+        public function __construct($dbConnexion)
         {
-            $dbConnexion = new DbConnection();
-            $this->db = $dbConnexion->getDb();
+            $this->db = $dbConnexion;
         }
 
         public function getCustomerAccount($session_id, $account_index) {

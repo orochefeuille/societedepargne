@@ -7,9 +7,11 @@ class Operation {
     protected $comments;
     protected $account_id;
 
-    public function __construct(array $data)
+    public function __construct(array $data = null)
     {
-        $this->hydrate($data);
+        if($data) {
+            $this->hydrate($data);
+        }
     }
 
     private function hydrate(array $data) {
