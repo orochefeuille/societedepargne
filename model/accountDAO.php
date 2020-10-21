@@ -1,13 +1,33 @@
 <?php
-    require "db_connection.php";
-
     class accountDAO {
         private $db;
 
-        public function __construct()
+        public function __construct($dbConnexion)
         {
-            $dbConnexion = new DbConnection();
-            $this->db = $dbConnexion->getDb();
+            $this->db = $dbConnexion;
+        }
+
+        public function getCustomerAccount($session_id, $account_index) {
+            $query = $this->db->prepare(
+                "SELECT a.* 
+                 FROM account AS a
+                 INNER JOIN customer AS c 
+                    ON c.id = a.customer_id 
+                 WHERE a.customer_id = :customer_id
+                    AND a.id = :index
+                "              
+            );
+
+            $result = $query->execute(
+                [
+                    "customer_id" => $session_id,
+                    "index" => $account_index
+                ]
+            );
+
+            $query->setFetchMode(PDO::FETCH_CLASS, "Account");
+            $customer_account= $query->fetch();
+            return $customer_account;
         }
 
         public function getCustomerAccounts($session_id) {
