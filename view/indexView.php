@@ -1,5 +1,5 @@
 <?php
-  $page_title ="Vos comptes | La Société d'épargne";
+  $page_title = "Vos comptes | La Société d'épargne";
   
   require('template/navbar.php');
   require('template/header.php');
@@ -8,7 +8,6 @@
 ?>
 
    <!-- Main -->
-   <?php?> 
     <p class="text-info ml-4 mb-0">Bienvenue <span class="font-weight-bolder"><?= $_SESSION["firstname"];?>  <?= $_SESSION["lastname"];?></span></p>
     <main class="container-fluid w-100 text-center">
         <section class="accounts-vue-wrapper">
@@ -25,7 +24,9 @@
                   <p class="card-text">Solde au  <?=  date('d-m-Y');  ?> :</p> 
                     <p class="card-text <?=  balance_color($account->getBalance()); ?>"><?= $account->getBalance(); ?> €</p>
                   <p class="card-text">Dernière opération :</p>
-                  <p class="card-text">le <?=  date('d-m-Y');  ?> - </p>
+                  <p>
+                  <?= $operationDAO->getAccountLastOperation($account->getId())["amount"];?>
+                  </p>
                 </div>
                 <footer class="bg-orange my-3 p-2 w-75 rounded mx-auto">
                     <a href="singleaccount.php?&account-index=<?=$account->getId(); ?>" class="card-link text-white">Gérer ce compte</a>
