@@ -11,7 +11,7 @@
             $query = $this->db->prepare(
                         "SELECT o.date_transaction, o.amount, o.comments, o.is_credit
                          FROM operation As o
-                         WHERE o.id = :account_id
+                         WHERE o.account_id = :account_id
                         "              
             );
 

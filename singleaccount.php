@@ -21,6 +21,5 @@ $account = $accountDAO->getCustomerAccount($_SESSION["id"], $account_index);
 
 $operationDAO = new operationDAO($dbConnexion);
 $account_operations = $operationDAO->getAccountOperations($account_index);
-var_dump($account_operations);
 
 require "view/singleaccountView.php"; 
