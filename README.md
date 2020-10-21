@@ -123,6 +123,10 @@ Now that your database is ready, you have a one-week sprint to integrate the fol
 
 Translated with www.DeepL.com/Translator (free version)
 
+## "Développeur Web et Web Mobile" - week 15 project * Part 5
+
+    Begin to restructure this main project towards the MVC pattern and the POO paradigm 
+
 ## "Développeur Web et Web Mobile" - week 16 project * Part 5
 
     Now that your application is online, many bugs and enhancement requests have been reported to your product owner. The project squad is already working on their resolution but the work is more complicated than expected. It is difficult to intervene in the code but also to understand the organization of the application and the implementation of the functionalities.
@@ -141,3 +145,4 @@ To go further :
  - Offer the logged-in user the possibility to modify his profile information via a form. Some information such as age cannot be changed, but the address for example can be changed.
 
 Translated with www.DeepL.com/Translator (free version)
+
