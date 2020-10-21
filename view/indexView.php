@@ -15,9 +15,13 @@
           <div id="articless-wrapper" class="row mx-auto d-flex justify-content-around">
             <?php
               foreach ($customer_accounts as $account): 
-                $amount = $operationDAO->getAccountLastOperation($account->getId())["amount"];
-                $is_credit = $operationDAO->getAccountLastOperation($account->getId())["is_credit"];
-                $amount = $is_credit ? $amount : $amount * -1;
+                $amount = $operationDAO->getAccountLastOperation($account->getId());
+                if($amount) {
+                  $amount = $amount[0]->getAmount();
+                  $is_credit = $operationDAO->getAccountLastOperation($account->getId());
+                  $is_credit = $is_credit[0]->getIs_credit();
+                  $amount = $is_credit ? $amount : $amount * -1;
+                }
             ?>
               <article class="card m-5" style="width: 18rem;">
                 <header class="bg-dark text-white pt-2 pb-1 mb-4">

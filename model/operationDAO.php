@@ -12,6 +12,7 @@
                         "SELECT o.date_transaction, o.amount, o.comments, o.is_credit
                          FROM operation As o
                          WHERE o.account_id = :account_id
+                         ORDER BY o.date_transaction DESC
                         "              
             );
 
@@ -27,9 +28,10 @@
 
         public function getAccountLastOperation($account_id) {
             $query = $this->db->prepare(
-                        "SELECT MAX(o.date_transaction) AS last_transaction, o.amount, o.is_credit
+                        "SELECT o.date_transaction, o.amount, o.is_credit
                          FROM operation As o
                          WHERE o.account_id = :account_id
+                         ORDER BY o.date_transaction DESC LIMIT 0, 1
                         "              
             );
 
@@ -39,8 +41,7 @@
                 ]
             );
 
-            $query->setFetchMode(PDO::FETCH_CLASS, "Operation");
-            $last_operation = $query->fetch();
+            $last_operation = $query->fetchAll(PDO::FETCH_CLASS, "Operation");
             return $last_operation;
         }
     }

@@ -5,7 +5,7 @@ $dbConnexion = $dbConnexion->getDb();
   require "model/accountDAO.php";
   require "model/entity/account.php";   
   require "model/operationDAO.php";
-  // require "model/entity/operation.php";
+  require "model/entity/operation.php";
   $accountDAO = new accountDAO($dbConnexion);
   $operationDAO = new operationDAO($dbConnexion);
 
