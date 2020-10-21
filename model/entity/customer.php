@@ -7,11 +7,9 @@ class Customer {
     protected $email;
     protected $pass;
 
-    public function __construct(array $data = null)
+    public function __construct(array $data)
     {
-        if($data) {
-            $this->hydrate($data);
-        }
+        $this->hydrate($data);
     }
 
     private function hydrate(array $data) {
