@@ -1,7 +1,7 @@
 <?php
 session_start();
-if($_SESSION["user"]) {
-    unset($_SESSION["user"]);
+if($_SESSION["id"]) {
+    session_destroy();
     header('Location: http://localhost/societedepargne/login.php');
 }
 ?>
