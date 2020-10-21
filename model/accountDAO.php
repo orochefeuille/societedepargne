@@ -10,6 +10,29 @@
             $this->db = $dbConnexion->getDb();
         }
 
+        public function getCustomerAccount($session_id, $account_index) {
+            $query = $this->db->prepare(
+                "SELECT a.* 
+                 FROM account AS a
+                 INNER JOIN customer AS c 
+                    ON c.id = a.customer_id 
+                 WHERE a.customer_id = :customer_id
+                    AND a.id = :index
+                "              
+            );
+
+            $result = $query->execute(
+                [
+                    "customer_id" => $session_id,
+                    "index" => $account_index
+                ]
+            );
+
+            $customer_account= $query->fetchAll(PDO::FETCH_CLASS, "Account");
+            var_dump($customer_account);
+            return $customer_account;
+        }
+
         public function getCustomerAccounts($session_id) {
             $query = $this->db->prepare(
                         "SELECT a.* 

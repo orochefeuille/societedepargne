@@ -8,7 +8,6 @@
 ?>
 
    <!-- Main -->
-   <?php?> 
     <p class="text-info ml-4 mb-0">Bienvenue <span class="font-weight-bolder"><?= $_SESSION["firstname"];?>  <?= $_SESSION["lastname"];?></span></p>
     <main class="container-fluid w-100 text-center">
         <section class="accounts-vue-wrapper">
