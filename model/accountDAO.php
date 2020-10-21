@@ -28,8 +28,8 @@
                 ]
             );
 
-            $customer_account= $query->fetchAll(PDO::FETCH_CLASS, "Account");
-            var_dump($customer_account);
+            $query->setFetchMode(PDO::FETCH_CLASS, "Account");
+            $customer_account= $query->fetch();
             return $customer_account;
         }
 

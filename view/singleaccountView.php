@@ -1,5 +1,5 @@
 <?php
-  $page_title ="Vos comptes | La Société d'épargne";
+  $page_title = $account->getLabel() . " | La Société d'épargne";
   
   require('template/navbar.php');
   require('template/header.php');
