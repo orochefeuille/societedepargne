@@ -7,6 +7,7 @@
             $this->db = $dbConnexion;
         }
 
+        // Create
         public function createCustomerAccount(Account $account) {
             $query = $this->db->prepare(
                 "INSERT INTO account (label, iban, balance, customer_id)
@@ -25,6 +26,7 @@
             return $result;
         }
 
+        // Read
         public function getCustomerAccount($session_id, $account_index) {
             $query = $this->db->prepare(
                 "SELECT a.* 
@@ -66,5 +68,24 @@
   
             $customer_accounts= $query->fetchAll(PDO::FETCH_CLASS, "Account");
             return $customer_accounts;
+        }
+
+        // Update
+
+        // Delete
+        public function deleteAccount($account_index) {
+            $query = $this->db->prepare(
+                "DELETE 
+                 FROM account
+                 WHERE id = :account_id
+                "              
+            );
+
+            $result = $query->execute(
+                [
+                    "account_id" => $account_index
+                ]
+            );
+            return $result;
         }
     }
