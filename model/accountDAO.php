@@ -7,6 +7,24 @@
             $this->db = $dbConnexion;
         }
 
+        public function createCustomerAccount(Account $account) {
+            $query = $this->db->prepare(
+                "INSERT INTO account (label, iban, balance, customer_id)
+                 VALUES (:label, :iban, :balance, :customer_id)
+                "              
+            );
+
+            $result = $query->execute(
+                [
+                    "label" => $account->getLabel(),
+                    "iban" => $account->getIban(),
+                    "balance" => $account->getBalance(),
+                    "customer_id" => $account->getCustomer_id()
+                ]
+            );
+            return $result;
+        }
+
         public function getCustomerAccount($session_id, $account_index) {
             $query = $this->db->prepare(
                 "SELECT a.* 
