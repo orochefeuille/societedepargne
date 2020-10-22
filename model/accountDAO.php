@@ -71,6 +71,22 @@
         }
 
         // Update
+        public function updateBalance($newBalance, $account_index) {
+            $query = $this->db->prepare(
+                "UPDATE account 
+                 SET balance = :newBalance
+                 WHERE id = :account_id
+                "              
+            );
+
+            $result = $query->execute(
+                [   
+                    "newBalance" => $newBalance,
+                    "account_id" => $account_index
+                ]
+            );
+            return $result;           
+        }
 
         // Delete
         public function deleteAccount($account_index) {
