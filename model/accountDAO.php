@@ -70,6 +70,23 @@
             return $customer_accounts;
         }
 
+        public function getCustomerAccountBalance($account_index) {
+            $query = $this->db->prepare(
+                        "SELECT balance 
+                         FROM account
+                         WHERE id = :account_index
+                        "              
+            );
+
+            $result = $query->execute(
+                [
+                    "account_index" => $account_index
+                ]
+            );
+            $customer_account_balance = $query->fetch(PDO::FETCH_ASSOC);
+            return $customer_account_balance;
+        }
+
         // Update
         public function updateBalance($newBalance, $account_index) {
             $query = $this->db->prepare(
