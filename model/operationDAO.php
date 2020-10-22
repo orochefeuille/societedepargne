@@ -6,7 +6,27 @@
         {
             $this->db = $dbConnexion;
         }
+        
+        //Create
+        public function addOperation(Operation $operation) {
+            $query = $this->db->prepare(
+                "INSERT INTO operation(amount, is_credit, comments, account_id) 
+                 VALUES(:amount, :is_credit, :comments, :account_id)
+                "              
+            );
 
+            $result = $query->execute(
+                [
+                    "amount" => $operation->getAmount(),
+                    "is_credit" => $operation->getIs_credit(),
+                    "comments" => $operation->getComments(),
+                    "account_id" => $operation->getAccount_id()
+                ]
+            );
+            return $result;
+        }
+        
+        // Read
         public function getAccountOperations($account_id) {
             $query = $this->db->prepare(
                         "SELECT o.date_transaction, o.amount, o.comments, o.is_credit

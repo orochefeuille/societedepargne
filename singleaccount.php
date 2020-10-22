@@ -16,9 +16,11 @@ if (!isset($_SESSION['id'])) {
 }
 $account_index = htmlspecialchars($_GET['account-index']);
 
+// show customer account details
 $accountDAO = new accountDAO($dbConnexion);
 $account = $accountDAO->getCustomerAccount($_SESSION["id"], $account_index);
 
+// Display transactions in desc for this account
 $operationDAO = new operationDAO($dbConnexion);
 $account_operations = $operationDAO->getAccountOperations($account_index);
 
@@ -26,6 +28,13 @@ $account_operations = $operationDAO->getAccountOperations($account_index);
 $is_account_deleted = false;
 if(isset($_POST["confirm-delete"])) {
   $is_account_deleted = $accountDAO->deleteAccount($account_index);
+}
+
+// Credit this account
+$is_credited = false;
+$is_debited = false;
+if(isset($_POST["validate-transaction"])) {
+  var_dump($_POST);
 }
 
 require "view/singleaccountView.php"; 
