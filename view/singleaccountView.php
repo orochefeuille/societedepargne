@@ -1,5 +1,10 @@
 <?php
-  $page_title = $account->getLabel() . " | La Société d'épargne";
+    if($is_account_deleted) {
+        $page_title = " Gérer votre compte| La Société d'épargne";
+    }
+    else {
+        $page_title = $account->getLabel() . " | La Société d'épargne";
+    }
   
   require('template/navbar.php');
   require('template/header.php');

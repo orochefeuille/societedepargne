@@ -17,12 +17,7 @@ if (!isset($_SESSION['id'])) {
 $account_index = htmlspecialchars($_GET['account-index']);
 $accountDAO = new accountDAO($dbConnexion);
 $operationDAO = new operationDAO($dbConnexion);
-
-// Delete this account
 $is_account_deleted = false;
-if(isset($_POST["confirm-delete"])) {
-  $is_account_deleted = $accountDAO->deleteAccount($account_index);
-}
 
 // Credit this account
 $is_credited = false;
@@ -36,18 +31,25 @@ if(!empty($_POST) && isset($_POST["is_credit"])) {
   $new_operation = new Operation($_POST);
   if($_POST["is_credit"] == 1) {
     $is_credited = $operationDAO->addOperation($new_operation);
-    $operation = intVal($_POST["amount"]);
+    $operation = floatVal($_POST["amount"]);
   }
   else {
     $is_debited = $operationDAO->addOperation($new_operation);
-    $operation = intVal($_POST["amount"]) * -1;
+    $operation = floatVal($_POST["amount"]) * -1;
   }
 }
 
 // Update account balance
 $account_balance = $accountDAO->getCustomerAccountBalance($account_index);
-$account_balance = intVal($account_balance["balance"]) + $operation;
-$accountDAO->updateBalance($account_balance, $account_index);
+if($account_balance) {
+  $account_balance = floatVal($account_balance["balance"]) + $operation;
+  $accountDAO->updateBalance($account_balance, $account_index);
+}
+
+// Delete this account
+if(isset($_POST["confirm-delete"])) {
+  $is_account_deleted = $accountDAO->deleteAccount($account_index);
+}
 
 // Show customer account details
 $account = $accountDAO->getCustomerAccount($_SESSION["id"], $account_index);
@@ -55,3 +57,5 @@ $account = $accountDAO->getCustomerAccount($_SESSION["id"], $account_index);
 // Display transactions in desc for this account
 $account_operations = $operationDAO->getAccountOperations($account_index);
 require "view/singleaccountView.php"; 
+
+
