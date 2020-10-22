@@ -3,7 +3,7 @@
   
   require('template/navbar.php');
   require('template/header.php');
-  require('src/ls_functions.php');
+  
   
 ?>
 

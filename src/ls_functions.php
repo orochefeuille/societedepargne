@@ -10,4 +10,14 @@
     return $iban;
   }
 
+  // Connection to database
+  function postDataHtmlspecialchars(array $data) :array {
+    $tempArray = [];
+    foreach($data as $item) {
+      array_push($tempArray, htmlspecialchars($item));
+    }
+    return $tempArray;
+  }
+
+
 ?>

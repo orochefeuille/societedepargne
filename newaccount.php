@@ -7,6 +7,7 @@
   require "model/entity/account.php";   
 
   require "data/bank_accounts.php";
+  require "src/ls_functions.php";
   
   session_start ();
   if (!isset($_SESSION['id'])) {
@@ -27,7 +28,7 @@
   // Create new account object 
   $is_created = false;
   if(!empty($_POST) && isset($_POST["submit"])) {
-    var_dump($_POST);
+    $post = postDataHtmlspecialchars($_POST);
     $new_account = new Account($_POST);
     $is_created =$accountDAO->createCustomerAccount($new_account);
   }
