@@ -28,8 +28,6 @@
             </select>
         </div>
         <div class="form-group">
-            <input type="hidden" name="iban" value="<?= generate_iban(); ?>">
-            <input type="hidden" name="customer_id" value="<?= $_SESSION['id']; ?>">
             <label for="balance">Indiquez le montant du premier dépôt :</label>
             <input type="number" class="form-control" id="balance"  name="balance" aria-describedby="amountHelp" min="50" required>
             <small id="amountHelp" class="form-text text-orange">Le dépôt minimum pour ouvrir un compte est de 50 €.</small>

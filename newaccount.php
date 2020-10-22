@@ -28,7 +28,10 @@
   // Create new account object 
   $is_created = false;
   if(!empty($_POST) && isset($_POST["submit"])) {
-    $post = postDataHtmlspecialchars($_POST);
+    $_POST["label"] = htmlspecialchars($_POST["label"]);
+    $_POST["balance"] = htmlspecialchars($_POST["balance"]);
+    $_POST["customer_id"] = $_SESSION["id"];
+    $_POST["iban"] = generate_iban();
     $new_account = new Account($_POST);
     $is_created =$accountDAO->createCustomerAccount($new_account);
   }
