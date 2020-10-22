@@ -15,11 +15,11 @@
           <div id="articless-wrapper" class="row mx-auto d-flex justify-content-around">
             <?php
               foreach ($customer_accounts as $account): 
-                $amount = $operationDAO->getAccountLastOperation($account->getId());
-                if($amount) {
-                  $amount = $amount[0]->getAmount();
-                  $is_credit = $operationDAO->getAccountLastOperation($account->getId());
-                  $is_credit = $is_credit[0]->getIs_credit();
+                $last_operations = $operationDAO->getAccountOperations($account->getId());
+                if($last_operations) {
+                  $amount = $last_operations[0]->getAmount();
+                  $operations = $operationDAO->getAccountOperations($account->getId());
+                  $is_credit = $operations[0]->getIs_credit();
                   $amount = $is_credit ? $amount : $amount * -1;
                 }
             ?>
@@ -30,7 +30,7 @@
                 <div class="card-body p-0">
                   <p class="card-text">Solde au  <?=  date('d-m-Y');  ?> :</p> 
                   <p class="card-text <?=  balance_color($account->getBalance()); ?>"><?= $account->getBalance(); ?> €</p>
-                <?php if($amount) : ?>  
+                <?php if($last_operations) : ?>  
                   <p class="card-text">Dernière opération :</p>
                   <p class="card-text <?=  balance_color($amount); ?>"> <?= $amount; ?> €</p>
                 <?php endif; ?>
