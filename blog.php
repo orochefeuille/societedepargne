@@ -2,12 +2,12 @@
   $page_title ="Votre blog | La Société d'épargne";
 
   session_start ();
-  if (!isset($_SESSION['user'])) {
+  if (!isset($_SESSION['id'])) {
     header('Location: http://localhost/societedepargne/login.php');
   }
   
-  require('template/navbar.php');
-  require('template/header.php');
+  require('view/template/navbar.php');
+  require('view/template/header.php');
 ?>
   <!-- Main -->
   <main class="container-fluid w-75 text-center">
@@ -16,6 +16,6 @@
       </section> 
   </main>
 <?php
-   $script = "<script src='js/blog.js'></script>";
-   require('template/footer.php');
+   $script = "<script src='public/js/blog.js'></script>";
+   require('view/template/footer.php');
 ?>
