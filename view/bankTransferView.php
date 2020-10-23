@@ -34,8 +34,14 @@ require('template/header.php');
                         <input class="w-100" type="number" value="valider" name="amount" min="0" step="0.01" required>
                     </div>
                     <div class="form-group">
-                        <button type="button" id="cancel-transaction" class="btn bg-info text-white" >Annuler</button>
-                        <button type="submit" value="" name="is_credit" id="validate-transaction" class="btn bg-success text-white">Valider</button>
+                        <button type="button" name="transfer_button" id="transfer_button" class="btn bg-orange text-white">Valider</button>
+                    </div>
+                    <div id="transfer-card" class="card border-dark my-3">
+                        <div class="card-body bg-dark text-white">
+                            <p class="card-text"> texte </p>
+                            <button type="submit" name="confirm-transfer" id="confirm-transfer" class="btn bg-orange text-white font-weight-bold float-right">Confirmer</button>
+                            <button type="button" id="cancel-transfer" class="btn bg-dark text-info border-info float-right mx-2">Annuler</button>
+                        </div>
                     </div>
                 </form>
             </section> 
