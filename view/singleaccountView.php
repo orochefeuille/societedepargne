@@ -35,12 +35,7 @@
             <p class="lead">N° du compte : <span class="ml-3 text-info"><?= $account->getIban(); ?></span> </p>
             <p class="lead">Date de création : <span class="ml-3 text-info"><?= date('d-m-Y', strtotime($account->getDate_creation())); ?></span> </p>
             <p class="lead">Gestionnaire : <span class="ml-3 text-info"><?= $_SESSION["firstname"]; ?> <?= $_SESSION["lastname"]; ?></span> <p>
-            <p class="lead">Solde : 
-            <!-- <?php if($query1['total']): ?>
-            <span class="ml-3 <?= balance_color(floatval($query1['total'])); ?>"><?= $query1['total'] ?> €</span></p>
-            <?php else: ?> -->
-            <span class="ml-3 <?= balance_color(floatval($account->getBalance())); ?>"><?= $account->getBalance() ?> €</span></p>
-            <!-- <?php endif; ?> -->
+            <p class="lead">Solde : <span class="ml-3 <?= balance_color(floatval($account->getBalance())); ?>"><?= $account->getBalance() ?> €</span></p>
             <div class="lead">Dernières opérations : 
             <?php foreach($account_operations as $operation):
                 if(!$operation->getIs_credit()):
@@ -54,7 +49,7 @@
                     <?php endif; ?>
                 </p>
             <?php endforeach; ?>
-        </div>
+            </div>
         <div class="container mt-5">
             <button type="button" class="btn bg-orange text-white" id="credit-btn">Créditer ce compte</button>
             <button type="button" class="btn bg-orange text-white" id="dedit-btn">Déditer ce compte</button>
