@@ -1,11 +1,11 @@
 <?php
-require "model/db_connection.php";
-$dbConnexion = new DbConnection();
-$dbConnexion = $dbConnexion->getDb();
+  require "model/db_connection.php";
+  $dbConnexion = new DbConnection();
+  $dbConnexion = $dbConnexion->getDb();
   require "model/accountDAO.php";
   require "model/entity/account.php";   
   require "model/operationDAO.php";
-  // require "model/entity/operation.php";
+  require "model/entity/operation.php";
   $accountDAO = new accountDAO($dbConnexion);
   $operationDAO = new operationDAO($dbConnexion);
 
@@ -15,6 +15,6 @@ $dbConnexion = $dbConnexion->getDb();
   }
   $customer_accounts = $accountDAO->getCustomerAccounts($_SESSION["id"]);
   
-require "view/indexView.php";
+  require "view/indexView.php";
 
   

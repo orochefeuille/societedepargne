@@ -2,7 +2,7 @@ const createAccountBtn = document.getElementById("create-account");
 const cancelBtn = document.getElementById("cancel-account");
 const confirmCard = document.getElementById("confirm-card");
 const confirmBtn = document.getElementById("confirm-account");
-const accountAmount = document.getElementById("account-amount");
+const accountAmount = document.getElementById("balance");
 const accountsList = document.getElementById("accounts-list");
 let cardText = document.querySelector(".card-text");
 

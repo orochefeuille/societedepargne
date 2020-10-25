@@ -2,12 +2,12 @@
   $page_title ="La finance | La Société d'épargne";
 
   session_start ();
-  if (!isset($_SESSION['user'])) {
+  if (!isset($_SESSION['id'])) {
     header('Location: http://localhost/societedepargne/login.php');
   }
   
-  require('template/navbar.php');
-  require('template/header.php');
+  require('view/template/navbar.php');
+  require('view/template/header.php');
   require('data/savingsrate.php');
   $rate = get_rate();
 ?>
@@ -39,5 +39,6 @@
   </main>
 
 <?php
-  require('template/footer.php');
+  $script = null; 
+  require('view/template/footer.php');
 ?>
