@@ -22,6 +22,19 @@ foreach ($customer_accounts as $customer_account) {
   array_push($customer_accounts_labels, $customer_account->getLabel());
 }
 
+function getAccountIdFromAccountLabel($customer_accounts, $account_label) {
+  foreach ($customer_accounts as $customer_account) {
+    if($customer_account->getLabel()  == $account_label) {
+      return $customer_account->getId();
+    }
+  }
+}
 
+if(!empty($_POST) && isset($_POST["confirm-transfer"])) {
+  $debit_account_id = getAccountIdFromAccountLabel($customer_accounts,  htmlspecialchars($_POST["accounts-list-debit"]));
+  $credit_account_id = getAccountIdFromAccountLabel($customer_accounts, htmlspecialchars($_POST["accounts-list-credit"]));
+  $transfer_amount = htmlspecialchars($_POST["amount"]);
+  var_dump($debit_account_id, " - ", $credit_account_id, " : ", $transfer_amount);
+}
 
 require "view/bankTransferView.php"; 
