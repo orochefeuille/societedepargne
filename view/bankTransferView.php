@@ -10,6 +10,11 @@ require('template/header.php');
         <div class="col-12">
             <section class="newaccount-wrapper">
                 <h2 class="text-info mb-5 lead font-weight-bold text-center">Effectuer un virement sécurisé :</h2>
+                <?php if($message) : ?>
+                    <div>
+                        <p class="alert bg-orange text-white text-center" role="alert"><?= $message ?></p>
+                    </div>
+                <?php endif; ?>
                 <form class="container mt-2" action="" method="post" id="single-form">
                     <div class="form-group">
                         <label for="accounts-list-debit">Compte à débiter (obligatoire) :</label>
