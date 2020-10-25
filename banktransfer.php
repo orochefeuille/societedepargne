@@ -22,6 +22,7 @@ foreach ($customer_accounts as $customer_account) {
   array_push($customer_accounts_labels, $customer_account->getLabel());
 }
 
+// utilities
 function getAccountIdFromAccountLabel($customer_accounts, $account_label) {
   foreach ($customer_accounts as $customer_account) {
     if($customer_account->getLabel()  == $account_label) {
@@ -30,11 +31,38 @@ function getAccountIdFromAccountLabel($customer_accounts, $account_label) {
   }
 }
 
+function getAccountBalanceFromAccountLabel($customer_accounts, $account_label) {
+  foreach ($customer_accounts as $customer_account) {
+    if($customer_account->getLabel()  == $account_label) {
+      return $customer_account->getBalance();
+    }
+  }
+}
+ 
+/*** Transaction ***/
+// get involved accounts id
+$debit_account_id;
+$credit_account_id;
+$transfer_amount;
+$debited_account_amount;
 if(!empty($_POST) && isset($_POST["confirm-transfer"])) {
   $debit_account_id = getAccountIdFromAccountLabel($customer_accounts,  htmlspecialchars($_POST["accounts-list-debit"]));
   $credit_account_id = getAccountIdFromAccountLabel($customer_accounts, htmlspecialchars($_POST["accounts-list-credit"]));
   $transfer_amount = htmlspecialchars($_POST["amount"]);
-  var_dump($debit_account_id, " - ", $credit_account_id, " : ", $transfer_amount);
+  $debited_account_amount = getAccountBalanceFromAccountLabel($customer_accounts,  htmlspecialchars($_POST["accounts-list-debit"]));
 }
+var_dump($debited_account_amount);
+
+// try {
+//   $dbConnexion->beginTransaction();
+//   // write debit operation 
+
+//   $dbConnexion->commit();
+// } catch (PDOException $e) {
+//   $dbConnexion->rollBack();
+//   print "Erreur !: " . $e->getMessage() . "<br/>";
+//   die();
+// }
+
 
 require "view/bankTransferView.php"; 
