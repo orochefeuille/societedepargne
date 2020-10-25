@@ -19,7 +19,7 @@ $accountDAO = new accountDAO($dbConnexion);
 $operationDAO = new operationDAO($dbConnexion);
 $is_account_deleted = false;
 
-// Credit this account
+// Credit/Debit this account
 $is_credited = false;
 $is_debited = false;
 $operation = 0;

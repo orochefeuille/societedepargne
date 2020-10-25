@@ -1,9 +1,9 @@
 <?php
 
 /*** 
- * bank_account.php devient une requête sql (Objet utilitaire) ?
+ * Transactions: dans controlleur ou créer son propre DAO ?
  * 
- * db_connection final and return in get ??? (good practice ?)
+ * 
  * 
  * 
  * 
