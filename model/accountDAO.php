@@ -1,5 +1,5 @@
 <?php
-    class accountDAO {
+    class AccountDAO {
         private $db;
 
         public function __construct($dbConnexion)
@@ -10,8 +10,8 @@
         // Create
         public function createCustomerAccount(Account $account) {
             $query = $this->db->prepare(
-                "INSERT INTO account (label, iban, balance, customer_id)
-                 VALUES (:label, :iban, :balance, :customer_id)
+                "INSERT INTO account (label, iban, date_creation, balance, customer_id)
+                 VALUES (:label, :iban, NOW(), :balance, :customer_id)
                 "              
             );
 

@@ -18,7 +18,7 @@
   $available_accounts = get_available_accounts();
 
   // Get existing customer accounts labels 
-  $accountDAO = new accountDAO($dbConnexion);
+  $accountDAO = new AccountDAO($dbConnexion);
   $customer_accounts = $accountDAO->getCustomerAccounts($_SESSION["id"]);
   $customer_accounts_label = [];
   foreach($customer_accounts as $customer_account) {

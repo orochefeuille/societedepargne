@@ -1,5 +1,5 @@
 <?php
-    class operationDAO {
+    class OperationDAO {
         private $db;
 
         public function __construct($dbConnexion)
@@ -10,8 +10,8 @@
         //Create
         public function addOperation(Operation $operation) {
             $query = $this->db->prepare(
-                "INSERT INTO operation(amount, is_credit, comments, account_id) 
-                 VALUES(:amount, :is_credit, :comments, :account_id)
+                "INSERT INTO operation(date_transaction, amount, is_credit, comments, account_id) 
+                 VALUES(NOW(), :amount, :is_credit, :comments, :account_id)
                 "              
             );
 
