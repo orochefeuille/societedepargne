@@ -11,7 +11,7 @@
 
   session_start();
   if (!isset($_SESSION['id'])) {
-    header('Location: http://localhost/societedepargne/login.php');
+    header('Location: login.php');
   }
   $customer_accounts = $accountDAO->getCustomerAccounts($_SESSION["id"]);
   
