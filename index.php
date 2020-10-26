@@ -6,12 +6,12 @@
   require "model/entity/account.php";   
   require "model/operationDAO.php";
   require "model/entity/operation.php";
-  $accountDAO = new accountDAO($dbConnexion);
-  $operationDAO = new operationDAO($dbConnexion);
+  $accountDAO = new AccountDAO($dbConnexion);
+  $operationDAO = new OperationDAO($dbConnexion);
 
   session_start();
   if (!isset($_SESSION['id'])) {
-    header('Location: http://localhost/societedepargne/login.php');
+    header('Location: login.php');
   }
   $customer_accounts = $accountDAO->getCustomerAccounts($_SESSION["id"]);
   

@@ -15,8 +15,8 @@ if (!isset($_SESSION['id'])) {
   header('Location: http://localhost/societedepargne/login.php');
 }
 $account_index = htmlspecialchars($_GET['account-index']);
-$accountDAO = new accountDAO($dbConnexion);
-$operationDAO = new operationDAO($dbConnexion);
+$accountDAO = new AccountDAO($dbConnexion);
+$operationDAO = new OperationDAO($dbConnexion);
 $is_account_deleted = false;
 
 // Credit/Debit this account
